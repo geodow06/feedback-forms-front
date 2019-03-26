@@ -75,15 +75,15 @@ class HomepageComponent extends Component {
 				{JSON.parse(auth.isAuthenticated()) ?
 					<div className="home-body">
 						<div id="dashboard-item-1">
-							{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'true') ? <a href="/cohorts">COHORTS ({this.state.cohorts})</a> : <a href="/form">FORM</a>}
+							{JSON.parse(auth.isAuthenticated() && cookies.get('type') === 'trainer') ? <a href="/cohorts">COHORTS ({this.state.cohorts})</a> : <a href="/form">FORM</a>}
 						</div>
 
 						<div id="right-dashboard">
 							<div id="dashboard-item-2">
-								{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'true') ? <a href="/trainees">TRAINEES ({this.state.unassignedList})</a> : <a href="/account">ACCOUNT</a>}
+								{JSON.parse(auth.isAuthenticated() && cookies.get('type') === 'trainer') ? <a href="/trainees">TRAINEES ({this.state.unassignedList})</a> : <a href="/account">ACCOUNT</a>}
 							</div>
 							<div id="dashboard-item-3">
-								{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'true') ? <a href="/account">ACCOUNT</a> : <a href="/home" onClick={() => { auth.logout(() => { }); }}>LOGOUT</a>}
+								{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'trainer') ? <a href="/account">ACCOUNT</a> : <a href="/home" onClick={() => { auth.logout(() => { }); }}>LOGOUT</a>}
 							</div>
 						</div>
 					</div>
