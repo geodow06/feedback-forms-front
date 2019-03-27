@@ -6,9 +6,9 @@ import { ProtectedRoute } from './Protected.route';
 import { UnprotectedRoute } from './Unprotected.route';
 import { TraineeprotectedRoute } from './Traineeprotected.route';
 
-import LandingComponent from './components/LandingComponent';
-import Register from './components/RegisterComponent';
-import Login from './components/LoginComponent';
+import LandingComponent from './LandingComponent';
+import Register from './RegisterComponent';
+import Login from './LoginComponent';
 
 
 class LandingRoute extends Component {

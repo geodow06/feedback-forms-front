@@ -5,12 +5,15 @@ import {
 } from 'react-router-dom';
 import Routes from './Routes';
 import Navbar from './components/NavbarComponent';
-import LandingComponent from './components/LandingComponent';
+import LandingRoute from './components/LandingRoute';
 
 class App extends Component {
 	render() {
 		return (
-			<LandingComponent />
+			<Router>
+				<LandingRoute />
+			</Router>
+
 		);
 	}
 }
