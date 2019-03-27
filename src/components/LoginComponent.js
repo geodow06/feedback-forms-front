@@ -11,7 +11,7 @@ class LoginComponent extends Component {
  	super();
 
   	this.state = {
-  		users: [],
+  		//users: [],	Not needed 
   		userName: "",
   		email: "",
   		password: "",
@@ -31,7 +31,7 @@ class LoginComponent extends Component {
       this.setState({ password: event.target.value });
   }
 
-
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // The username and password should be verified in the backend and then should return successful or failed
 
   // setUser = () => {
@@ -72,8 +72,8 @@ class LoginComponent extends Component {
       url: constants.gateway + 'getuser'
   	})
     .then(response => {
-	    	if (response.data) {
-	    		auth.login(user);
+	    	if (response.data != null) {
+	    		auth.login(response.data);
 	    		message = "Logged in successfully."; 
 					break;
 	    	}	else {
@@ -84,6 +84,8 @@ class LoginComponent extends Component {
     		})    
   	})
 	} 
+
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   render() {
     return (

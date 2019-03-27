@@ -20,6 +20,7 @@ class HomepageComponent extends Component {
 
 		}
 
+
 		axios({
 			method: 'get',
 			url: constants.gateway + 'getAccounts'

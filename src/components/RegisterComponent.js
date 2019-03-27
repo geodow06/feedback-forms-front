@@ -58,21 +58,23 @@ constructor() {
     	return <p className="good-response">Password is valid</p>
     }
   }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // This should be in the back end to prevent potential users creating an admin account
 
-  adminCheck = () => {
-    if (this.state.email.endsWith("qa.com")) {
-      return this.setUser(true);
+  // adminCheck = () => {
+  //   if (this.state.email.endsWith("qa.com")) {
+  //     return this.setUser(true);
       
-    }
-    else if (this.state.email.endsWith("academytrainee.com")) {
-       return this.setUser(false);
-    } else {
-      this.setState({
-        error: "Email must be a qa or academytrainee address."
-      })
-    }
-  }
-
+  //   }
+  //   else if (this.state.email.endsWith("academytrainee.com")) {
+  //      return this.setUser(false);
+  //   } else {
+  //     this.setState({
+  //       error: "Email must be a qa or academytrainee address."
+  //     })
+  //   }
+  // }
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   setUser = (admin) => {
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(this.state.password, salt);
