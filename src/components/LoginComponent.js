@@ -11,7 +11,7 @@ class LoginComponent extends Component {
  	super();
 
   	this.state = {
-  		//users: [],	Not needed 
+  		users: [],
   		userName: "",
   		email: "",
   		password: "",
@@ -31,61 +31,37 @@ class LoginComponent extends Component {
       this.setState({ password: event.target.value });
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // The username and password should be verified in the backend and then should return successful or failed
-
-  // setUser = () => {
-	// 	axios({
-  //     method:'get',
-  //     url: constants.gateway + 'getAccounts'
-  // 	})
-  //   .then(response => {
-    	
-  //   	let message;
-
-  //     this.setState({
-  //       users: response.data
-  //     });
-  //     let email = this.state.email;
-	// 		let password = this.state.password;
-
-	// 		for (let user of this.state.users) {
-	//     	if (email === user.email && bcrypt.compareSync(password, user.password)) {
-
-	//     		auth.login(user);
-
-	//     		message = "Logged in successfully."; 
-	// 				break;
-	//     	}	else {
-	//     		message = "Username or password invalid";
-	//     	}
-	//     }
-	// 		this.setState({
-  //   			error: message
-  //   		})    
-  // 	})
-	// } 
-
-	  setUser = () => {
+  setUser = () => {
 		axios({
       method:'get',
-      url: constants.gateway + 'getuser'
+      url: constants.gateway + 'getAccounts'
   	})
     .then(response => {
-	    	if (response.data != null) {
-	    		auth.login(response.data);
+    	
+    	let message;
+
+      this.setState({
+        users: response.data
+      });
+      let email = this.state.email;
+			let password = this.state.password;
+
+			for (let user of this.state.users) {
+	    	if (email === user.email && bcrypt.compareSync(password, user.password)) {
+
+	    		auth.login(user);
+
 	    		message = "Logged in successfully."; 
 					break;
 	    	}	else {
 	    		message = "Username or password invalid";
 	    	}
+	    }
 			this.setState({
     			error: message
     		})    
   	})
 	} 
-
-	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   render() {
     return (
