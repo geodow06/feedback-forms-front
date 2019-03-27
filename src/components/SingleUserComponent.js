@@ -113,7 +113,7 @@ class SingleUserComponent extends Component {
     		</div>
     		<div className="single-user-body">
 				<div id="single-user-info">
-					<h1>{this.state.trainee.firstName} {this.state.trainee.lastName}</h1><button id="flag-trainee" onClick={this.flagTrainee} className="button">FLAG</button>
+					<h1>{this.state.trainee.firstName} {this.state.trainee.lastName}</h1><a id="flag-trainee" onClick={this.flagTrainee} className="button">FLAG</a>
 					<p>Cohort Number: {this.state.trainee.cohortID}</p>
 					<p>Flagged? {this.state.flagged}</p>
 					<p>Feedback given: {this.state.feedbackSize}</p>

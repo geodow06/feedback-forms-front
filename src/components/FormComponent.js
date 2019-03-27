@@ -30,7 +30,7 @@ class FormComponent extends Component {
 	  	})
 	  	.then(response => {
 	  		for (let i = 0; i < response.data.length; i++) {
-	  			if (cookies.get('_id') === response.data[i].accountID) {
+	  			if (cookies.get('_id') == response.data[i].accountID) {
 						if (response.data[i].cohortID == null) {
 							this.setState({
 								error: "You have not been assigned a cohort yet, please speak with your trainer.",
@@ -58,7 +58,7 @@ class FormComponent extends Component {
 					})
 					.then(response => {
 						for (let k = 0; k < response.data.length; k++) {
-							if (response.data[k].week === this.state.week || this.state.user.cohortID === null) {
+							if (response.data[k].week == this.state.week || this.state.user.cohortID === null) {
 								this.setState({
 									error: "You already submitted this week. Try again next week.",
 									show: "no-show-form"

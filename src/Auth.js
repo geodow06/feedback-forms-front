@@ -16,7 +16,7 @@ class Auth {
 	login(cb) {
 		cookies.set('email', cb.email);
 		cookies.set('_id', cb.accountID);
-		cookies.set('type', cb.type);
+		cookies.set('admin', cb.admin);
 		this.authenticated = true;
 		setTimeout(function(){
 			window.history.back();
@@ -26,7 +26,7 @@ class Auth {
 	logout(cb) {
 			cookies.remove('email');
 			cookies.remove('_id');
-			cookies.remove('type');
+			cookies.remove('admin');
 			this.authenticated = false;
 		setTimeout(function(){
 		}, 1000);

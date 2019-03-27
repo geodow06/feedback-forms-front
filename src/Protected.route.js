@@ -11,7 +11,7 @@ export const ProtectedRoute = ({component: Component, ...rest}) => {
 		<Route 
 		{...rest} 
 		render= {props => {
-			if (auth.isAuthenticated() && cookies.get('type') === "trainer") {
+			if (auth.isAuthenticated() && cookies.get('admin') == "true") {
 				return <Component {...props} />;
 			} else {
 				return <Redirect to={
