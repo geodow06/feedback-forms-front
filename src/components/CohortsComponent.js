@@ -22,13 +22,19 @@ class CohortsComponent extends Component {
 			})
 		})
 	}
+	
+	chooseCohort=()=>{ 
+		this.props.chooseCohort();
+	}
 
   render() {
 
   	let cohorts = this.state.cohortList.map((cohort, i) => (
 
 			<div className="single-cohort" key={i} >
-			<a href={"/singlecohort/" + cohort.cohortID} >
+			{/* <a href={"/singlecohort/" + cohort.cohortID} >  */}
+			<a onClick={this.chooseCohort}> 
+			{/* <button></button> */}
 				<p>Number: {cohort.cohortID}</p>
 				<p>{cohort.cohortName}</p>
 				<p>Week: {cohort.week}</p>
