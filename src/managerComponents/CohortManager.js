@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
 import '../js/form';
-import axios from 'axios';
-import * as constants from "../Consts.js";
-import Cookies from 'universal-cookie'; 
 import CohortsComponent from '../components/CohortsComponent';
 import SingleCohortComponent from '../components/SingleCohortComponent';
 
@@ -13,30 +10,27 @@ class CohortManager extends Component {
         super();
 
         this.state = {
-            chosen:false
+            chosen: false,
+            chosenCohort: ""
         }
-      
     }
-  
 
-   chooseCohort=()=>{ 
-       this.setState({chosen:true})
-   }
+    chooseCohort = (cohort) => {
+        this.setState({ chosen: true, chosenCohort: cohort })
+    }
 
     render() {
-        if(!chosen){ 
+        if (!this.state.chosen) {
             return (
-                <div >
-                   <CohortsComponent chooseCohort={this.chooseCohort}/>
-                </div>
-            );
-        } 
-        else{ 
-            return( 
-                <SingleCohortComponent/>
+                <CohortsComponent chooseCohort={this.chooseCohort} />
             );
         }
-        
+        else {
+            return (
+                <SingleCohortComponent chosenCohort={this.chosenCohort} />
+            );
+        }
+
     }
 }
 

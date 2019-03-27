@@ -9,7 +9,7 @@ class SingleCohortComponent extends Component {
 		super();
 
 	  this.state = {
-			cohort: "",
+			cohort: {name:"null"},
 			cohortName: "",			
 			trainerName: "",
 			week: 0,
@@ -17,39 +17,39 @@ class SingleCohortComponent extends Component {
 			traineesList: []
 		}
 
-		axios({
-			method: 'get',
-			// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
-			url: constants.gateway + 'getCohortByCohortID/' + props.match.params.id
-		}).then(response => {
+		// axios({
+		// 	method: 'get',
+		// 	// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
+		// 	url: constants.gateway + 'getCohortByCohortID/' + props.match.params.id
+		// }).then(response => {
 
 			
 
-			this.setState({
-				cohort: response.data,
-				cohortName: response.data.cohortName,
-				trainerName: response.data.trainerName,
-				week: response.data.week,
-				description: response.data.cohortDescription
-			})
-		})
+		// 	this.setState({
+		// 		cohort: response.data,
+		// 		cohortName: response.data.cohortName,
+		// 		trainerName: response.data.trainerName,
+		// 		week: response.data.week,
+		// 		description: response.data.cohortDescription
+		// 	})
+		// })
 
-		axios({
-			method: 'get',
-			url: constants.gateway + 'getAccountsByCohortID/' + props.match.params.id
-		}).then(response => {
+		// axios({
+		// 	method: 'get',
+		// 	url: constants.gateway + 'getAccountsByCohortID/' + props.match.params.id
+		// }).then(response => {
 
-			if (response.data === "null") {
-				this.setState({
-					traineesList: []
-				})
-			} else {
+		// 	if (response.data === "null") {
+		// 		this.setState({
+		// 			traineesList: []
+		// 		})
+		// 	} else {
 
-				this.setState({
-					traineesList: response.data
-				})
-			}
-		})
+		// 		this.setState({
+		// 			traineesList: response.data
+		// 		})
+		// 	}
+		// })
 	}
 
   render() {
@@ -64,7 +64,7 @@ class SingleCohortComponent extends Component {
 
     return (
     	<div className="main-body">
-			<h1>{this.state.cohortName}</h1>
+			<h1>{this.state.cohort.Name}</h1>
 			<p>Trainer: {this.state.trainerName}</p>
 			<p>Description: {this.state.description}</p>
 			<h3>Trainees</h3>

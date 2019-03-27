@@ -17,6 +17,7 @@ import Cohort from './components/SingleCohortComponent';
 import User from './components/SingleUserComponent';
 import ViewForm from './components/ViewFormComponent';
 import NewCohort from './components/NewCohortComponent';
+import CohortManager from './managerComponents/CohortManager';
 
 class Routes extends Component {
   render() {
@@ -34,7 +35,8 @@ class Routes extends Component {
 		<Route  path="/trainees" component={ Trainees } />
 		<Route path="/account" component={ Account } />
 		<Route path="/register" component={ Register } /> 
-		<Route path="/login" component={ Login } />
+		<Route path="/login" component={ Login } /> 
+		<Route path="/cohortmanager" component={ CohortManager }/>
 		{/* <ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
 		<ProtectedRoute  path="/singleuser/:id" component={ User } />
 		<ProtectedRoute  path="/viewform/:id" component={ ViewForm } />

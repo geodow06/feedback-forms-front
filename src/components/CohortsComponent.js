@@ -9,7 +9,8 @@ class CohortsComponent extends Component {
 		super();
 
 		this.state = {
-			cohortList: []
+			cohortList: [] 
+
 		}
 
 		axios({
@@ -23,8 +24,8 @@ class CohortsComponent extends Component {
 		})
 	}
 	
-	chooseCohort=()=>{ 
-		this.props.chooseCohort();
+	chooseCohort=(cohort)=>{ 
+		this.props.chooseCohort(cohort);
 	}
 
   render() {
@@ -33,7 +34,7 @@ class CohortsComponent extends Component {
 
 			<div className="single-cohort" key={i} >
 			{/* <a href={"/singlecohort/" + cohort.cohortID} >  */}
-			<a onClick={this.chooseCohort}> 
+			<a onClick={this.chooseCohort(cohort)}> 
 			{/* <button></button> */}
 				<p>Number: {cohort.cohortID}</p>
 				<p>{cohort.cohortName}</p>
@@ -61,7 +62,8 @@ class CohortsComponent extends Component {
 		  </div>
 			<div className="all-cohorts">				
 				{ cohorts }
-			</div>
+			</div> 
+			<button onClick={this.chooseCohort}>click here to choose</button>
 		</div>
     );
   }
