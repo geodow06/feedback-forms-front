@@ -5,7 +5,9 @@ import axios from 'axios';
 import auth from '../Auth';
 import * as constants from "../Consts.js";
 import { post } from 'https';
-
+import {
+	BrowserRouter as Router
+} from 'react-router-dom';
 import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
@@ -112,10 +114,12 @@ class LoginComponent extends Component {
 		else if (cookies.get('type') === "trainer") {
 			return (
 				<div>
-					<header className="App-header">
-						<NavBar />
-					</header>
-					<TrainerRoute account={this.state.account} />
+					<Router>
+						<header className="App-header">
+							<NavBar />
+						</header>
+						<TrainerRoute account={this.state.account} />
+					</Router>
 				</div>
 			);
 
