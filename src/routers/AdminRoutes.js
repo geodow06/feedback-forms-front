@@ -2,23 +2,14 @@ import React, { Component } from 'react';
 import {
     Route
 } from 'react-router-dom';
-import {ProtectedRoute} from './Protected.route';
-import {UnprotectedRoute} from './Unprotected.route';
-import {TraineeprotectedRoute} from './Traineeprotected.route';
 
-import Homepage from './components/HomepageComponent';
-import SubmitForm from './components/FormComponent';
-import Cohorts from './components/CohortsComponent';
-import Trainees from './components/TraineesComponent.1';
-import Account from './components/AccountComponent';
-import Register from './components/RegisterComponent';
-import Login from './components/LoginComponent';
-import Cohort from './components/SingleCohortComponent';
-import User from './components/SingleUserComponent';
-import ViewForm from './components/ViewFormComponent';
-import NewCohort from './components/NewCohortComponent';
+import Homepage from '../components/HomepageComponent';
+import Cohort from '../components/SingleCohortComponent';
+import User from '../components/SingleUserComponent';
+import ViewForm from '../components/ViewFormComponent';
+import NewCohort from '../components/NewCohortComponent';
 
-class TrainerRoutes extends Component {
+class AdminRoutes extends Component {
   render() {
   	return (
   	<div>
@@ -26,7 +17,7 @@ class TrainerRoutes extends Component {
 		<Route exact path="/home" component={ Homepage } />
 		{/* <TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
-		<ProtectedRoute  path="/trainees" component={ Trainees } />*/
+		<ProtectedRoute  path="/trainees" component={ Trainees } />
 		<Route path="/form" component={ SubmitForm } />
 		<Route  path="/cohorts" component={ Cohorts } />
 		<Route  path="/trainees" component={ Trainees } />
@@ -41,4 +32,6 @@ class TrainerRoutes extends Component {
 		<Route  path="/newcohort" component={ NewCohort } /> 
 	</div>
 	)}
-}
+} 
+
+export default AdminRoutes;
