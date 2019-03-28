@@ -142,7 +142,7 @@ class LoginComponent extends Component {
 			return ( 
 			<div> 
 				<a>You fucked up son</a>  
-				<button onClick={() => {auth.logout(()=>{});}}>LOGOUT</button> 
+				<button href="/" onClick={() => {auth.logout(()=>{});}}>LOGOUT</button> 
 			</div>
 			
 				);
