@@ -113,14 +113,7 @@ class LoginComponent extends Component {
 		}
 		else if (cookies.get('type') === "trainer") {
 			return (
-				<div>
-					<Router>
-						<header className="App-header">
-							<NavBar />
-						</header>
 						<TrainerRoute account={this.state.account} />
-					</Router>
-				</div>
 			);
 
 

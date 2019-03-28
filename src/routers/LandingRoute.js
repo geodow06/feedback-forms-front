@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Route,Router
+    Route
 } from 'react-router-dom';
 
 import LandingComponent from '../components/LandingComponent';
@@ -10,12 +10,10 @@ import Login from '../components/LoginComponent';
 class LandingRoute extends Component {
     render() {
         return (
-            <div> 
-                <Router>
+            <div>
                 <Route exact path="/" component={LandingComponent} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} /> 
-                </Router>
             </div>
         )
     }
