@@ -4,13 +4,18 @@ import {
 	BrowserRouter as Router
 } from 'react-router-dom';
 import LandingRoute from './routers/LandingRoute';
-
+import NavBar from './components/NavbarComponent';
 
 class App extends Component {
 	render() {
-		return ( 
-			<Router> 
-				<LandingRoute/>
+		return (
+			<Router>
+				<div>
+					<header className="App-header">
+						<NavBar />
+					</header>
+					<LandingRoute />
+				</div>
 			</Router>
 		);
 	}

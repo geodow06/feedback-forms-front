@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-    Route
+	Route
 } from 'react-router-dom';
-import {ProtectedRoute} from '../Protected.route';
-import {UnprotectedRoute} from '../Unprotected.route';
-import {TraineeprotectedRoute} from '../Traineeprotected.route';
+import { ProtectedRoute } from '../Protected.route';
+import { UnprotectedRoute } from '../Unprotected.route';
+import { TraineeprotectedRoute } from '../Traineeprotected.route';
 
 import TrainerHomepage from '../components/TrainerHomepageComponent';
 import SubmitForm from '../components/FormComponent';
@@ -19,31 +19,27 @@ import TrainerHomepageComponent from '../components/TrainerHomepageComponent';
 
 
 
-class TrainerRoutes extends Component { 
+class TrainerRoutes extends Component {
 
-	constructor(props){ 
-		super(props); 
+	constructor(props) {
+		super(props);
 	}
-	
 
-	logOut1=()=>{ 
-		this.props.logOut();
-	}
-	
 	render() {
-  	return (
-  	<div>
-		<Route exact path="/login/" render={()=><TrainerHomepage logOut1={this.logOut1}/>}/>
-		<Route path="/login/form" render={()=><SubmitForm logOut1={this.logOut1}/>}/>
-		<Route path="/login/cohorts" render={()=><Cohorts logOut1={this.logOut1}/>}/>
-		<Route path="/login/trainees" render={()=><Trainees logOut1={this.logOut1}/>}/>
-		<Route path="/login/account" render={()=><Account logOut1={this.logOut1}/>}/>
-		<Route path="/login/cohort:id" render={()=><Cohort logOut1={this.logOut1}/>}/>
-		<Route path="/login/newcohort" render={()=><NewCohort logOut1={this.logOut1}/>}/> 
-		<Route path="/login/viewform:id" render={()=><ViewForm logOut1={this.logOut1}/>}/>
-		<Route path="/login/singleuser/:id" render={()=><User logOut1={this.logOut1}/>}/> 
-	</div>
-	)}
-} 
+		return (
+			<div>
+				<Route exact path="/login/" render={() => <TrainerHomepage />} />
+				<Route path="/login/form" render={() => <SubmitForm />} />
+				<Route path="/login/cohorts" render={() => <Cohorts />} />
+				<Route path="/login/trainees" render={() => <Trainees />} />
+				<Route path="/login/account" render={() => <Account />} />
+				<Route path="/login/cohort:id" render={() => <Cohort />} />
+				<Route path="/login/newcohort" render={() => <NewCohort />} />
+				<Route path="/login/viewform:id" render={() => <ViewForm />} />
+				<Route path="/login/singleuser/:id" render={() => <User />} />
+			</div>
+		)
+	}
+}
 
 export default TrainerRoutes;

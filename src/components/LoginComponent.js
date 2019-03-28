@@ -10,7 +10,7 @@ import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
 import Cookies from 'universal-cookie';
- 
+
 const cookies = new Cookies();
 
 class LoginComponent extends Component {
@@ -46,33 +46,23 @@ class LoginComponent extends Component {
 		axios({
 			method: 'get',
 			url: `${constants.gateway}/getAccountByEmail/${this.state.email}`,
-			
+
 		}).then(response => {
 			let message = "";
 			this.setState({
 				account: response.data
 			});
-		
-			 if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
 
-			    //  this.setState({loggedIn:true,type:this.state.account.type});
-				 auth.login(this.state.account);
-				 
-				 message = "Logged in successfully."; 
-			     
-			 }   else {
-			     message = "Username or password invalid";
-			 }
-			
-
+			if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
+				auth.login(this.state.account);
+				message = "Logged in successfully.";
+			} else {
+				message = "Username or password invalid";
+			}
 			this.setState({
-			 error: message
+				error: message
 			})
 		})
-	}
-
-	logOut = () => {
-		this.setState({ loggedIn: false })
 	}
 
 	makeTrainer = () => {
@@ -86,8 +76,6 @@ class LoginComponent extends Component {
 	}
 	render() {
 		if (!auth.isAuthenticated()) {
-
-
 			return (
 				<div className="main-body">
 					<div className="container">
@@ -116,37 +104,28 @@ class LoginComponent extends Component {
 							</div>
 						</form>
 					</div>
-				</div> 
-				// <div>
-				// 	<button onClick={this.makeTrainer}>Trainer</button>
-				// 	<button onClick={this.makeTrainee}>Trainee</button>
-				// 	<button onClick={this.makeAdmin}>Admin</button>
-				// </div>
-
-
+				</div>
 			);
 		}
 		else if (cookies.get('type') === "trainer") {
-			return (<TrainerRoute logOut={this.logOut}/>);
+			return (<TrainerRoute account={this.state.account} />);
 
 		}
 		else if (cookies.get('type') === "trainee") {
-			return (<TraineeRoute logOut={this.logOut}/>);
+			return (<TraineeRoute account={this.state.account} />);
 
 		}
 		else if (cookies.get('type') === "admin") {
-			return (<AdminRoute logOut={this.logOut}/>);
+			return (<AdminRoute account={this.state.account} />);
 
 		}
 		else {
-			return ( 
-			<div> 
-				<a>You fucked up son</a>  
-				<a href="/" onClick={() => {auth.logout(()=>{});}}>LOGOUT</a> 
-			</div>
-			
-				);
-
+			return (
+				<div>
+					<a>You fucked up son</a>
+					<a href="/" onClick={() => { auth.logout(() => { }); }}>LOGOUT</a>
+				</div>
+			);
 		}
 	}
 }
