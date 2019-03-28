@@ -14,7 +14,9 @@ class App extends Component {
 					<header className="App-header">
 						<NavBar />
 					</header>
-					<LandingRoute />
+					<div id="main-content">
+						<LandingRoute />
+					</div>
 				</div>
 			</Router>
 		);
