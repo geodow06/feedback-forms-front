@@ -10,7 +10,8 @@ import LandingComponent from './components/LandingComponent';
 class App extends Component {
 	render() {
 		return (
-			<LandingComponent />
+			// <LandingComponent /> 
+			<TrainerForm/>
 		);
 	}
 }
