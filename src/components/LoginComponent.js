@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import axios from 'axios';
 import auth from '../Auth';
 import * as constants from "../Consts.js";
-import { get } from 'https';
+import { post } from 'https';
 
 import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';

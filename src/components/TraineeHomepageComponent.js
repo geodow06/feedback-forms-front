@@ -9,8 +9,8 @@ const cookies = new Cookies();
 
 class TraineeHomepageComponent extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             trainees: [],
@@ -20,58 +20,58 @@ class TraineeHomepageComponent extends Component {
 
         }
 
-
-        axios({
-            method: 'get',
-            url: constants.gateway + 'getAccounts'
-        }).then(response => {
-
-            let uList = [];
-
-            this.setState({
-                trainees: response.data
-            })
-            for (let i = 0; i < response.data.length; i++) {
-                if (response.data[i].cohortID === null && response.data[i].admin === false) {
-                    uList.push(response.data[i]);
-                }
-            }
-            this.setState({
-                unassignedList: uList.length
-            })
-        })
-
-        axios({
-            method: 'get',
-            url: constants.gateway + 'getCohorts'
-        }).then(response => {
-            let date = new Date();
-            let currentDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
-            this.setState({
-                cohorts: response.data.length
-            })
-            this.updateWeek(currentDate);
-        })
     }
+    //     axios({
+    //         method: 'get',
+    //         url: constants.gateway + 'getAccounts'
+    //     }).then(response => {
 
-    updateWeek = (currentDate) => {
-        if (this.state.timeUpdate !== currentDate) {
-            for (let i = 1; i <= this.state.cohorts; i++) {
-                axios({
-                    method: 'put',
-                    url: constants.gateway + 'updateWeekNumber/' + i
-                })
-            }
-            this.setState({
-                timeUpdate: currentDate
-            })
-        }
+    //         let uList = [];
 
+    //         this.setState({
+    //             trainees: response.data
+    //         })
+    //         for (let i = 0; i < response.data.length; i++) {
+    //             if (response.data[i].cohortID === null && response.data[i].admin === false) {
+    //                 uList.push(response.data[i]);
+    //             }
+    //         }
+    //         this.setState({
+    //             unassignedList: uList.length
+    //         })
+    //     })
+
+    //     axios({
+    //         method: 'get',
+    //         url: constants.gateway + 'getCohorts'
+    //     }).then(response => {
+    //         let date = new Date();
+    //         let currentDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    //         this.setState({
+    //             cohorts: response.data.length
+    //         })
+    //         this.updateWeek(currentDate);
+    //     })
+    // }
+
+    // updateWeek = (currentDate) => {
+    //     if (this.state.timeUpdate !== currentDate) {
+    //         for (let i = 1; i <= this.state.cohorts; i++) {
+    //             axios({
+    //                 method: 'put',
+    //                 url: constants.gateway + 'updateWeekNumber/' + i
+    //             })
+    //         }
+    //         this.setState({
+    //             timeUpdate: currentDate
+    //         })
+    //     }
+
+    // }
+
+    logOut2 = () => {
+        this.props.logOut1();
     }
-
-    	logOut2=()=>{
-		this.props.logOut1();
-	}
 
     render() {
 
@@ -87,7 +87,7 @@ class TraineeHomepageComponent extends Component {
                             {<a href="/account">ACCOUNT</a>}
                         </div>
                         <div id="dashboard-item-3">
-                            {<a href="/home" onClick={this.logout1()}>LOGOUT</a>}
+                            {<a href="/login" onClick={this.logOut1}>LOGOUT</a>}
                         </div>
                     </div>
                 </div>
