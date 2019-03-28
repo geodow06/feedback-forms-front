@@ -6,7 +6,7 @@ import {ProtectedRoute} from '../Protected.route';
 import {UnprotectedRoute} from '../Unprotected.route';
 import {TraineeprotectedRoute} from '../Traineeprotected.route';
 
-import Homepage from '../components/HomepageComponent';
+import TraineeHomepage from '../components/TraineeHomepageComponent';
 import SubmitForm from '../components/FormComponent';
 import Cohorts from '../components/CohortsComponent';
 import Trainees from '../components/TraineesComponent.1';
@@ -19,11 +19,20 @@ import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
 
 class TraineeRoutes extends Component {
+
+	constructor(props){
+		super(props);
+	}
+
+	logOut1=()=>{
+		this.props.logOut();
+	}
+
   render() {
   	return (
   	<div>
-		<Route exact path="/login/" component={ Homepage } />
-		<Route exact path="/login/home" component={ Homepage } />
+		<Route exact path="/login/" render={()=><TraineeHomepage logOut1={this.logOut1}/>}/>
+		<Route exact path="/login/home" component={ TraineeHomepage } />
 		<Route  path="/singlecohort/:id" component={ Cohort } />
 		<Route  path="/singleuser/:id" component={ User } />
 		<Route  path="/viewform/:id" component={ ViewForm } />
