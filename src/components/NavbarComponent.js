@@ -22,9 +22,9 @@ class NavComponent extends Component {
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "trainer") ? <Link to="/cohorts">Cohorts</Link> : null}</li>
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "trainer") ? <Link to="/trainees">Trainees</Link> : null}</li>
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "admin") ? <Link to="/">Admin</Link> : null}</li>
-					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/account">Account</Link> : null}</li>
-					<li> {JSON.parse(Auth.isAuthenticated()) ? null : <Link to="/register">Register</Link>}</li>
-					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/home" onClick={() => { Auth.logout(() => { }); }}>Logout</Link> : <Link to="/login">Login</Link>}</li>
+					<li> {Auth.isAuthenticated() ? <Link to="/account">Account</Link> : null}</li>
+					<li> {Auth.isAuthenticated() ? null : <Link to="/register">Register</Link>}</li>
+					<li> {Auth.isAuthenticated() ? <Link to="/" onClick={() => { Auth.logout(() => { }); }}>Logout</Link> : <Link to="/login">Login</Link>}</li>
 				</ul>
 			</div>
 		);
