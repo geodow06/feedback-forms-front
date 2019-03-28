@@ -75,7 +75,13 @@ constructor() {
   //   }
   // }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  setUser = (admin) => {
+  
+  handleSubmit(e) {
+    e.preventDefault();
+  }
+  
+  register = () => { 
+    
     let salt = bcrypt.genSaltSync(10);
     let hash = bcrypt.hashSync(this.state.password, salt);
 
@@ -87,8 +93,7 @@ constructor() {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            password: hash,
-            admin: admin
+            password: hash  
         }
     }).then(resp => {
 
@@ -124,7 +129,7 @@ constructor() {
     	<div className="main-body">
 			<div className="container">
 			  <h1 id="heading">Register Account</h1>
-			  <form>
+			  <form onSubmit={this.handleSubmit}>
           <div className="row">
             <div className="col-25">
               <label htmlFor="firstName">First Name</label>
@@ -161,7 +166,7 @@ constructor() {
 			    </div>
 			    <div className="row">
 
-            <button id="register-button" type="button" onClick={this.adminCheck}>Register</button>
+            <button id="register-button" type="button" onClick={this.register}>Register</button>
             <span id="error-message">{this.state.error}</span>
           </div>
 			  </form>
