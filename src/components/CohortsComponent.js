@@ -47,7 +47,7 @@ class CohortsComponent extends Component {
     	<div className="main-body">
 			<h1 id="heading">View all cohorts</h1>
 			<div id="add-cohort">
-				<button><a href="/newcohort">Add Cohort</a></button>
+				<button><a href="/login/newcohort">Add Cohort</a></button>
 			</div>
 		  <div className="cohort-filter">
 		    <select name="cohort-selection" id="cohort-selection">
