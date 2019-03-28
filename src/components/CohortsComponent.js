@@ -5,8 +5,8 @@ import * as constants from "../Consts.js";
 
 class CohortsComponent extends Component {
 
-	constructor(props) {
-		super(props);
+	constructor() {
+		super();
 
 		this.state = {
 			cohortList: [] 

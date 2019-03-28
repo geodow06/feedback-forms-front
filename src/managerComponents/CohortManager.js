@@ -25,9 +25,15 @@ class CohortManager extends Component {
                 <CohortsComponent chooseCohort={this.chooseCohort} />
             );
         }
+<<<<<<< HEAD
         else if(this.state.chosen===true){
             return (
                 <SingleCohortComponent chosenCohort={this.chosenCohort} />
+=======
+        else {
+            return (
+                <SingleCohortComponent chosenCohort={this.state.chosenCohort} />
+>>>>>>> parent of e8ca08e... updating
             );
         }
 
