@@ -35,6 +35,9 @@ class NavComponent extends Component {
 					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/account">Account</Link> : null}</li>
 					<li> {JSON.parse(Auth.isAuthenticated()) ? null : <Link to="/register">Register</Link>}</li>
 					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/home" onClick={() => { Auth.logout(() => { }); }}>Logout</Link> : <Link to="/login">Login</Link>}</li>
+<<<<<<< HEAD
+>>>>>>> parent of d908d83... updating navbar
+=======
 >>>>>>> parent of d908d83... updating navbar
 				</ul>
 			</div>
