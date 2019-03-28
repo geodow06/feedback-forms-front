@@ -87,7 +87,7 @@ class TraineeHomepageComponent extends Component {
                             {<a href="/account">ACCOUNT</a>}
                         </div>
                         <div id="dashboard-item-3">
-                            {<a href="/home" onClick={login.logout1()}>LOGOUT</a>}
+                            {<a href="/login" onClick={login.logout1()}>LOGOUT</a>}
                         </div>
                     </div>
                 </div>
