@@ -10,7 +10,7 @@ import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
 import Cookies from 'universal-cookie';
-
+import NavBar from './NavbarComponent';
 const cookies = new Cookies();
 
 class LoginComponent extends Component {
