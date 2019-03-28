@@ -18,9 +18,9 @@ class Auth {
 		cookies.set('_id', cb.accountID);
 		cookies.set('type', cb.type);
 		this.authenticated = true;
-		setTimeout(function(){
-			window.history.back();
-		}, 500);
+		// setTimeout(function(){
+		// 	window.history.back();
+		// }, 500);
 	}
 
 	logout(cb) {
