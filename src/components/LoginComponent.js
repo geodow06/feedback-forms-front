@@ -56,7 +56,7 @@ class LoginComponent extends Component {
 			 if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
 
 			    //  this.setState({loggedIn:true,type:this.state.account.type});
-				 auth.login(account);
+				 auth.login(this.state.account);
 				 
 				 message = "Logged in successfully."; 
 			     
