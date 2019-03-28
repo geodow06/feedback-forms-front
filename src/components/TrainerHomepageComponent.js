@@ -78,12 +78,12 @@ class TrainerHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <a href="/cohorts">COHORTS ({this.state.cohorts})</a>
+                        <a href="/login/cohorts">COHORTS ({this.state.cohorts})</a>
                     </div>
 
                     <div id="right-dashboard">
                         <div id="dashboard-item-2">
-                            <a href="/trainees">TRAINEES ({this.state.unassignedList})</a>
+                            <a href="/login/trainees">TRAINEES ({this.state.unassignedList})</a>
                         </div>
                         <div id="dashboard-item-3">
                             <button onClick={this.logOut2}>LOGOUT</button>
