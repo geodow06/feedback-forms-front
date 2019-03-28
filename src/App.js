@@ -11,8 +11,7 @@ import TrainerForm from './components/TrainerFormComponent'
 class App extends Component {
 	render() {
 		return (
-			// <LandingComponent /> 
-			<TrainerForm/>
+			<LandingComponent />
 		);
 	}
 }
