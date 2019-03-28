@@ -34,14 +34,14 @@ class TrainerRoutes extends Component {
   	return (
   	<div>
 		<Route exact path="/login/" render={()=><TrainerHomepage logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/form" render={()=><SubmitForm logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/cohorts" render={()=><Cohorts logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/trainees" render={()=><Trainees logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/account" render={()=><Account logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/cohort:id" render={()=><Cohort logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/newcohort" render={()=><NewCohort logOut1={this.logOut1}/>}/> 
-		<Route exact path="/login/viewform:id" render={()=><ViewForm logOut1={this.logOut1}/>}/>
-		<Route exact path="/login/singleuser/:id" render={()=><User logOut1={this.logOut1}/>}/> 
+		<Route path="/login/form" render={()=><SubmitForm logOut1={this.logOut1}/>}/>
+		<Route path="/login/cohorts" render={()=><Cohorts logOut1={this.logOut1}/>}/>
+		<Route path="/login/trainees" render={()=><Trainees logOut1={this.logOut1}/>}/>
+		<Route path="/login/account" render={()=><Account logOut1={this.logOut1}/>}/>
+		<Route path="/login/cohort:id" render={()=><Cohort logOut1={this.logOut1}/>}/>
+		<Route path="/login/newcohort" render={()=><NewCohort logOut1={this.logOut1}/>}/> 
+		<Route path="/login/viewform:id" render={()=><ViewForm logOut1={this.logOut1}/>}/>
+		<Route path="/login/singleuser/:id" render={()=><User logOut1={this.logOut1}/>}/> 
 	</div>
 	)}
 } 
