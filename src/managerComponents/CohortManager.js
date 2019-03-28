@@ -34,7 +34,7 @@ class CohortManager extends Component {
 
         else {
             return (
-                <SingleCohortComponent chosenCohort={this.state.chosenCohort} />
+                <SingleCohortComponent chosenCohort={this.chosenCohort} />
             );
         }
     }
