@@ -145,7 +145,7 @@ class RegisterComponent extends Component {
             </div>
             <div className="row">
 
-              <button id="register-button" type="button" onClick={this.register}>Register</button>
+              <button id="register-button" type="submit" onClick={this.register}>Register</button>
               <span id="error-message">{this.state.error}</span>
             </div>
           </form>

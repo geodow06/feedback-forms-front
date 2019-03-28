@@ -8,6 +8,7 @@ import Cohort from '../components/SingleCohortComponent';
 import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
+import Account from '../components/AccountComponent';
 
 class AdminRoutes extends Component { 
 
@@ -15,15 +16,15 @@ class AdminRoutes extends Component {
 		super(props);
 	} 
 
-	logOut1=()=>{ 
-		this.props.logOut();
-	}
+	// logOut1=()=>{ 
+	// 	this.props.logOut();
+	// }
 
   render() {
   	return (
   	<div>
 
-		<Route exact path="/login/" render={()=><AdminHomepage logOut1={this.logOut1}/>}/>
+		<Route exact path="/login/" render={()=><AdminHomepage account={this.props.account}/>}/>
 		{/* <TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
 		<ProtectedRoute  path="/trainees" component={ Trainees } />
@@ -35,10 +36,11 @@ class AdminRoutes extends Component {
 		<ProtectedRoute  path="/singleuser/:id" component={ User } />
 		<ProtectedRoute  path="/viewform/:id" component={ ViewForm } />
 		<ProtectedRoute  path="/newcohort" component={ NewCohort } /> */}
-		<Route  path="/singlecohort/:id" component={ Cohort } />
-		<Route  path="/singleuser/:id" component={ User } />
-		<Route  path="/viewform/:id" component={ ViewForm } />
-		<Route  path="/newcohort" component={ NewCohort } /> 
+		<Route  path="/login/singlecohort/:id" render={()=><Cohort account={this.props.account}/>}/>
+		<Route  path="/login/singleuser/:id" render={()=><User account={this.props.account}/>}/>
+		<Route  path="/login/viewform/:id" render={()=><ViewForm account={this.props.account}/>}/>
+		<Route  path="/login/newcohort" render={()=><NewCohort account={this.props.account}/>}/> 
+		<Route path="/login/account" render={()=><Account account={this.props.account}/>} />
 	</div>
 	)}
 } 
