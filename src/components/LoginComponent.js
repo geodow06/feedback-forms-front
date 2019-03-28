@@ -41,29 +41,29 @@ class LoginComponent extends Component {
 
 	logInRequest = () => {
 		axios({
-			method: 'post',
-			url: `${constants.gateway}/logIn`,
-			data: { email: this.state.email, password: this.state.password }
+			method: 'get',
+			url: `${constants.gateway}/getAccountByEmail/${this.state.email}`,
+			
 		}).then(response => {
-			// let message = "";
+			let message = "";
 			this.setState({
 				account: response.data
 			});
-			// for (let user of this.state.users) {
-			//  if (email === user.email && bcrypt.compareSync(password, user.password)) {
+		
+			 if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
 
-			//      auth.login(user);
+			     this.setState({loggedIn:true,type:this.state.account.type});
 
-			//      message = "Logged in successfully."; 
-			//      break;
-			//  }   else {
-			//      message = "Username or password invalid";
-			//  }
-			// } 
+			     message = "Logged in successfully."; 
+			     
+			 }   else {
+			     message = "Username or password invalid";
+			 }
+			
 
-			// this.setState({
-			//  error: message
-			// })
+			this.setState({
+			 error: message
+			})
 		})
 	}
 
@@ -85,39 +85,39 @@ class LoginComponent extends Component {
 
 
 			return (
-				// <div className="main-body">
-				// 	<div className="container">
-				// 		<h1 id="heading">Login</h1>
-				// 		<form>
-				// 			<div className="row">
-				// 				<div className="col-25">
-				// 					<label htmlFor="email">Email Address</label>
-				// 				</div>
-				// 				<div className="col-75">
-				// 					<input type="email" id="email" name="email" placeholder="Example: John.Doe@academytrainee.com" value={this.state.email} onChange={this.updateEmail} required />
-				// 				</div>
-				// 			</div>
-				// 			<div className="row">
-				// 				<div className="col-25">
-				// 					<label htmlFor="password">Password</label>
-				// 				</div>
-				// 				<div className="col-75">
-				// 					<input type="password" id="password" name="password" value={this.state.password} onChange={this.updatePassword} required />
-				// 				</div>
-				// 			</div>
-				// 			<div id="login-and-error" className="row">
+				<div className="main-body">
+					<div className="container">
+						<h1 id="heading">Login</h1>
+						<form>
+							<div className="row">
+								<div className="col-25">
+									<label htmlFor="email">Email Address</label>
+								</div>
+								<div className="col-75">
+									<input type="email" id="email" name="email" placeholder="Example: John.Doe@academytrainee.com" value={this.state.email} onChange={this.updateEmail} required />
+								</div>
+							</div>
+							<div className="row">
+								<div className="col-25">
+									<label htmlFor="password">Password</label>
+								</div>
+								<div className="col-75">
+									<input type="password" id="password" name="password" value={this.state.password} onChange={this.updatePassword} required />
+								</div>
+							</div>
+							<div id="login-and-error" className="row">
 
-				// 				<button id="login-button" type="button" onClick={this.setUser}>Login</button>
-				// 				<span id="error-message">{this.state.error}</span>
-				// 			</div>
-				// 		</form>
-				// 	</div>
-				// </div> 
-				<div>
-					<button onClick={this.makeTrainer}>Trainer</button>
-					<button onClick={this.makeTrainee}>Trainee</button>
-					<button onClick={this.makeAdmin}>Admin</button>
-				</div>
+								<button id="login-button" type="button" onClick={this.logInRequest}>Login</button>
+								<span id="error-message">{this.state.error}</span>
+							</div>
+						</form>
+					</div>
+				</div> 
+				// <div>
+				// 	<button onClick={this.makeTrainer}>Trainer</button>
+				// 	<button onClick={this.makeTrainee}>Trainee</button>
+				// 	<button onClick={this.makeAdmin}>Admin</button>
+				// </div>
 
 
 			);
