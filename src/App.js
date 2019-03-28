@@ -4,9 +4,11 @@ import {
 	BrowserRouter as Router
 } from 'react-router-dom';
 import LandingRoute from './routers/LandingRoute';
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 
-class App extends Component {
+class App extends Component { 
 	render() {
 		return ( 
 			<Router> 

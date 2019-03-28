@@ -44,6 +44,10 @@ class LoginComponent extends Component {
 		this.setState({ password: event.target.value });
 	}
 
+	// handleSubmit = (e) =>{ 
+	// 	e.preventDefault();
+	// }
+
 	logInRequest = () => {
 		axios({
 			method: 'get',
@@ -69,6 +73,14 @@ class LoginComponent extends Component {
 		})
 	}
 
+	// checkSubmit=(e)=> {
+	// 	if(e && e.keyCode == 13) {
+	// 	   document.forms[0].submit();
+	// 	}
+	//  } 
+
+	//  <div onKeyPress="return checkSubmit(event)"/>
+
 	// makeTrainer = () => {
 	// 	this.setState({ type: "trainer", loggedIn: true })
 	// }
@@ -84,7 +96,7 @@ class LoginComponent extends Component {
 				<div className="main-body">
 					<div className="container">
 						<h1 id="heading">Login</h1>
-						<form>
+						<form >
 							<div className="row">
 								<div className="col-25">
 									<label htmlFor="email">Email Address</label>
@@ -103,7 +115,7 @@ class LoginComponent extends Component {
 							</div>
 							<div id="login-and-error" className="row">
 
-								<button id="login-button" type="button" onClick={this.logInRequest}>Login</button>
+								<button id="login-button" type="submit" onClick={this.logInRequest}>Login</button>
 								<span id="error-message">{this.state.error}</span>
 							</div>
 						</form>
@@ -113,7 +125,7 @@ class LoginComponent extends Component {
 		}
 		else if (cookies.get('type') === "trainer") {
 			return (
-						<TrainerRoute account={this.state.account} />
+				<TrainerRoute account={this.state.account} />
 			);
 
 
