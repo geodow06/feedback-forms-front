@@ -6,10 +6,10 @@ import * as constants from "../Consts.js";
 class SingleCohortComponent extends Component {
 
 	constructor(props) {
-		super();
+		super(props);
 
 	  this.state = {
-			cohort: {name:"null"},
+			cohort: this.props.chosenCohort,
 			cohortName: "",			
 			trainerName: "",
 			week: 0,
@@ -64,7 +64,7 @@ class SingleCohortComponent extends Component {
 
     return (
     	<div className="main-body">
-			<h1>{this.state.cohort.Name}</h1>
+			<h1>{this.props.chosenCohort.Name}</h1>
 			<p>Trainer: {this.state.trainerName}</p>
 			<p>Description: {this.state.description}</p>
 			<h3>Trainees</h3>
