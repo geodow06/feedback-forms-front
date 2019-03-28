@@ -9,6 +9,9 @@ import { post } from 'https';
 import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
+import Cookies from 'universal-cookie';
+ 
+const cookies = new Cookies();
 
 class LoginComponent extends Component {
 
@@ -52,9 +55,10 @@ class LoginComponent extends Component {
 		
 			 if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
 
-			     this.setState({loggedIn:true,type:this.state.account.type});
-
-			     message = "Logged in successfully."; 
+			    //  this.setState({loggedIn:true,type:this.state.account.type});
+				 auth.login(account);
+				 
+				 message = "Logged in successfully."; 
 			     
 			 }   else {
 			     message = "Username or password invalid";
@@ -81,7 +85,7 @@ class LoginComponent extends Component {
 		this.setState({ type: "admin", loggedIn: true })
 	}
 	render() {
-		if (!this.state.loggedIn) {
+		if (!auth.isAuthenticated()) {
 
 
 			return (
@@ -122,15 +126,15 @@ class LoginComponent extends Component {
 
 			);
 		}
-		else if (this.state.type === "trainer") {
+		else if (cookies.get('type') === "trainer") {
 			return (<TrainerRoute logOut={this.logOut}/>);
 
 		}
-		else if (this.state.type === "trainee") {
+		else if (cookies.get('type') === "trainee") {
 			return (<TraineeRoute logOut={this.logOut}/>);
 
 		}
-		else if (this.state.type === "admin") {
+		else if (cookies.get('type') === "admin") {
 			return (<AdminRoute logOut={this.logOut}/>);
 
 		}

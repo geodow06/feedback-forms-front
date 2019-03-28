@@ -4,6 +4,7 @@ import login from './LoginComponent';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import * as constants from "../Consts.js";
+import Auth from '../Auth';
 
 const cookies = new Cookies();
 
@@ -86,7 +87,8 @@ class TrainerHomepageComponent extends Component {
                             <a href="/login/trainees">TRAINEES ({this.state.unassignedList})</a>
                         </div>
                         <div id="dashboard-item-3">
-                            <button onClick={this.logOut2}>LOGOUT</button>
+                            {/* <button onClick={this.logOut2}>LOGOUT</button> */}
+                            <a href="/home" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</a>
                         </div>
                     </div>
                 </div>
