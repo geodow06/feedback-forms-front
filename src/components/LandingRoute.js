@@ -6,9 +6,10 @@ import { ProtectedRoute } from './Protected.route';
 import { UnprotectedRoute } from './Unprotected.route';
 import { TraineeprotectedRoute } from './Traineeprotected.route';
 
-import LandingComponent from './components/LandingComponent';
-import Register from './components/RegisterComponent';
-import Login from './components/LoginComponent';
+import LandingComponent from './LandingComponent';
+import Register from './RegisterComponent';
+import Login from './LoginComponent'; 
+import TrainerForm from './TrainerFormComponent';
 
 
 class LandingRoute extends Component {
@@ -17,7 +18,8 @@ class LandingRoute extends Component {
             <div>
                 <Route path="/" component={LandingComponent} />
                 <Route path="/register" component={Register} />
-                <Route path="/login" component={Login} />
+                <Route path="/login" component={Login} /> 
+                <Route path="/trainerform" component={TrainerForm}/>
             </div>
         )
     }
