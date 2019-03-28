@@ -41,11 +41,11 @@ class LoginComponent extends Component {
 
 	logInRequest = () => {
 		axios({
-			method: 'get',
+			method: 'post',
 			url: `${constants.gateway}/logIn`,
 			data: { email: this.state.email, password: this.state.password }
 		}).then(response => {
-			let message = "";
+			// let message = "";
 			this.setState({
 				account: response.data
 			});
@@ -65,6 +65,10 @@ class LoginComponent extends Component {
 			//  error: message
 			// })
 		})
+	}
+
+	logOut = () => {
+		this.setState({ loggedIn: false })
 	}
 
 	makeTrainer = () => {
@@ -119,15 +123,15 @@ class LoginComponent extends Component {
 			);
 		}
 		else if (this.state.type === "trainer") {
-			return (<TrainerRoute />);
+			return (<TrainerRoute logOut={this.logOut}/>);
 
 		}
 		else if (this.state.type === "trainee") {
-			return (<TraineeRoute />);
+			return (<TraineeRoute logOut={this.logOut}/>);
 
 		}
 		else if (this.state.type === "admin") {
-			return (<AdminRoute />);
+			return (<AdminRoute logOut={this.logOut}/>);
 
 		}
 		else {

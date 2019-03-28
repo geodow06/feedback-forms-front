@@ -3,18 +3,27 @@ import {
     Route
 } from 'react-router-dom';
 
-import Homepage from '../components/HomepageComponent';
+import AdminHomepage from '../components/AdminHomepageComponent';
 import Cohort from '../components/SingleCohortComponent';
 import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
 
-class AdminRoutes extends Component {
+class AdminRoutes extends Component { 
+
+	constructor(props){ 
+		super(props);
+	} 
+
+	logOut1=()=>{ 
+		this.props.logOut();
+	}
+
   render() {
   	return (
   	<div>
-		<Route exact path="/" component={ Homepage } />
-		<Route exact path="/home" component={ Homepage } />
+
+		<Route exact path="/login/" render={()=><AdminHomepage logOut1={this.logOut1}/>}/>
 		{/* <TraineeprotectedRoute path="/form" component={ SubmitForm } />
 		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
 		<ProtectedRoute  path="/trainees" component={ Trainees } />
