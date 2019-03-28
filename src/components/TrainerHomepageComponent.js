@@ -76,10 +76,11 @@ class TrainerHomepageComponent extends Component {
     render() {
 
         return (
-            <div className="main-body">
+            <div className="main-body"> 
+                <p>Welcome back {this.props.account.firstName}</p>
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <a href="/login/cohorts">COHORTS ({this.state.cohorts})</a>
+                        <a href="/login/cohortmanager">COHORTS</a>
                     </div>
 
                     <div id="right-dashboard">
