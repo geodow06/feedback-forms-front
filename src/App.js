@@ -11,9 +11,9 @@ class App extends Component {
 		return (
 
 			<div>
-				<header className="App-header">
+				{/* <header className="App-header">
 					<NavBar />
-				</header>
+				</header> */}
 
 				<LandingRoute />
 
