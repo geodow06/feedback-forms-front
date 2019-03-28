@@ -139,7 +139,13 @@ class LoginComponent extends Component {
 
 		}
 		else {
-			return (<a>You fucked up son</a>);
+			return ( 
+			<div> 
+				<a>You fucked up son</a>  
+				<button onClick={() => {Auth.logout(()=>{});}}>LOGOUT</button> 
+			</div>
+			
+				);
 
 		}
 	}
