@@ -88,7 +88,7 @@ class TrainerHomepageComponent extends Component {
                         </div>
                         <div id="dashboard-item-3">
                             {/* <button onClick={this.logOut2}>LOGOUT</button> */}
-                            <a href="/home" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</a>
+                            <a href="/" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</a>
                         </div>
                     </div>
                 </div>
