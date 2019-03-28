@@ -77,7 +77,7 @@ class TrainerHomepageComponent extends Component {
 
         return (
             <div className="main-body"> 
-                <p>Welcome back {this.props.account.firstName}</p>
+                <p>Welcome back {this.props.account.email}</p>
                 <div className="home-body">
                     <div id="dashboard-item-1">
                         <a href="/login/cohortmanager">COHORTS</a>

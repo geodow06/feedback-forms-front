@@ -6,8 +6,8 @@ import SingleCohortComponent from '../components/SingleCohortComponent';
 
 class CohortManager extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             chosen: false,
@@ -25,9 +25,14 @@ class CohortManager extends Component {
                 <CohortsComponent chooseCohort={this.chooseCohort} />
             );
         }
-        else {
+        else if(this.state.chosen){
             return (
                 <SingleCohortComponent chosenCohort={this.state.chosenCohort} />
+            );
+        } 
+        else{ 
+            return( 
+                <p>you fucked up son</p>
             );
         }
 
