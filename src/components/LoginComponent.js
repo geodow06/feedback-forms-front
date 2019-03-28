@@ -24,7 +24,7 @@ class LoginComponent extends Component {
 			email: "",
 			password: "",
 			error: "",
-			loggedIn: false,
+			// loggedIn: false,
 			account: "",
 			type: ""
 		}
@@ -54,7 +54,9 @@ class LoginComponent extends Component {
 			});
 
 			if (bcrypt.compareSync(this.state.password, this.state.account.password)) {
+
 				auth.login(this.state.account);
+
 				message = "Logged in successfully.";
 			} else {
 				message = "Username or password invalid";
@@ -65,15 +67,15 @@ class LoginComponent extends Component {
 		})
 	}
 
-	makeTrainer = () => {
-		this.setState({ type: "trainer", loggedIn: true })
-	}
-	makeTrainee = () => {
-		this.setState({ type: "trainee", loggedIn: true })
-	}
-	makeAdmin = () => {
-		this.setState({ type: "admin", loggedIn: true })
-	}
+	// makeTrainer = () => {
+	// 	this.setState({ type: "trainer", loggedIn: true })
+	// }
+	// makeTrainee = () => {
+	// 	this.setState({ type: "trainee", loggedIn: true })
+	// }
+	// makeAdmin = () => {
+	// 	this.setState({ type: "admin", loggedIn: true })
+	// }
 	render() {
 		if (!auth.isAuthenticated()) {
 			return (
@@ -108,7 +110,14 @@ class LoginComponent extends Component {
 			);
 		}
 		else if (cookies.get('type') === "trainer") {
-			return (<TrainerRoute account={this.state.account} />);
+			return (
+				<Router>
+					<header className="App-header">
+						<NavBar />
+					</header>
+					<TrainerRoute account={this.state.account} />
+					);
+				</Router>
 
 		}
 		else if (cookies.get('type') === "trainee") {

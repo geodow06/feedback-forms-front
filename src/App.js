@@ -9,16 +9,16 @@ import NavBar from './components/NavbarComponent';
 class App extends Component {
 	render() {
 		return (
-			<Router>
-				<div>
-					<header className="App-header">
-						<NavBar />
-					</header>
-					<div id="main-content">
-						<LandingRoute />
-					</div>
-				</div>
-			</Router>
+
+			<div>
+				<header className="App-header">
+					<NavBar />
+				</header>
+
+				<LandingRoute />
+
+			</div>
+
 		);
 	}
 }
