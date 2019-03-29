@@ -40,7 +40,7 @@ class NewCohortComponent extends Component {
   createCohort = () => {
     axios({
       method: 'post',
-      url: constants.gateway + 'createCohort',
+      url: `http://35.246.12.195${constants.gateway}createCohort`,
       data: {
 
         cohortName: this.state.cohortName,

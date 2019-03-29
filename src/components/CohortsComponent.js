@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import * as constants from "../Consts.js";
+import { Link } from "react-router-dom";
 
 class CohortsComponent extends Component {
 
@@ -13,11 +14,13 @@ class CohortsComponent extends Component {
 
 		}
 
-		axios({
-			method: 'get',
-			// url: constants.get + 'getCohorts'
-			url: constants.gateway + 'getCohorts'
-		}).then(response => {
+		// axios({
+		// 	method: 'get',
+		// 	// url: constants.get + 'getCohorts'
+		// 	url: constants.gateway + 'getCohorts'
+		// })
+
+		axios.get(`http://35.246.12.195${constants.gateway}getCohorts`).then(response => {
 			this.setState({
 				cohortList: response.data
 			})
@@ -35,14 +38,14 @@ class CohortsComponent extends Component {
 		let cohorts = this.state.cohortList.map((cohort, i) => (
 
 			<div className="single-cohort" key={i} >
-				{/* <a href={"/singlecohort/" + cohort.cohortID} >  */}
-				{/* onClick={this.chooseCohort(cohort)} */}
-				<a >
+				<Link to={"/login/singlecohort/" + cohort.cohortID} >
+					{/* onClick={this.chooseCohort(cohort)} */}
+					{/* <a> */}
 					{/* <button></button> */}
 					<p>Number: {cohort.cohortID}</p>
 					<p>{cohort.cohortName}</p>
 					<p>Week: {cohort.week}</p>
-				</a>
+				</Link>
 			</div>
 		));
 

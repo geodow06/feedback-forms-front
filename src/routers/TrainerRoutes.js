@@ -29,11 +29,12 @@ class TrainerRoutes extends Component {
 			<div>
 				<Route exact path="/login/" render={() => <TrainerHomepage />} />
 				<Route path="/login/form" render={() => <SubmitForm />} />
+				<Route path="/login/cohorts" render={() => <Cohorts />} />
 				{/* <Route path="/login/cohorts" render={() => <Cohorts />} />  */}
-				<Route exact path="/login/cohortmanager" render={() => <CohortManager />} /> 
+				{/* <Route exact path="/login/cohortmanager" render={() => <CohortManager />} />  */}
 				<Route path="/login/trainees" render={() => <Trainees />} />
 				<Route path="/login/account" render={() => <Account />} />
-				{/* <Route exact path="/login/cohort:id" render={() => <Cohort />} /> */}
+				<Route path="/login/singlecohort/:id" render={(props) => <Cohort match={props.match} />} />
 				<Route path="/login/newcohort" render={() => <NewCohort />} />
 				<Route path="/login/viewform:id" render={() => <ViewForm />} />
 				<Route path="/login/singleuser/:id" render={() => <User />} />

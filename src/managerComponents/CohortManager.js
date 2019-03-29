@@ -3,17 +3,26 @@ import '../App.css';
 import '../js/form';
 import CohortsComponent from '../components/CohortsComponent';
 import SingleCohortComponent from '../components/SingleCohortComponent';
-
+import axios from 'axios';
+import * as constants from "../Consts.js";
 class CohortManager extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             chosen: false,
-            chosenCohort: ""
-        }
-    }
+            chosenCohort: "", 
+            cohortList:""
+        } 
+        axios.get(`http://35.246.12.195${constants.gateway}getCohorts`).then(response => {
+			this.setState({
+				cohortList: response.data
+			})
+		})
+    } 
+
+    
 
     chooseCohort = (cohort) => {
         this.setState({ chosen: true, chosenCohort: cohort })
@@ -26,7 +35,7 @@ class CohortManager extends Component {
     render() {
         if (!this.state.chosen) {
             return (
-                <CohortsComponent chooseCohort={this.chooseCohort} />
+                <CohortsComponent chooseCohort={this.chooseCohort} cohortList={this.state.cohortList} />
             );
         }
 
