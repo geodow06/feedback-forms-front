@@ -9,7 +9,8 @@ class CohortsComponent extends Component {
 		super();
 
 		this.state = {
-			cohortList: [] 
+			cohortList: [] , 
+			chosen:false
 
 		}
 
