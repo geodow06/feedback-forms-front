@@ -24,13 +24,13 @@ class CohortManager extends Component {
     }
 
     render() {
-        if (this.state.chosen === false) {
+        if (!this.state.chosen) {
             return (
                 <CohortsComponent chooseCohort={this.chooseCohort} />
             );
         }
 
-        else if (this.state.chosen === true) {
+        else if (this.state.chosen) {
             return (
                 <SingleCohortComponent chosenCohort={this.chosenCohort} back={this.back}/>
             );
