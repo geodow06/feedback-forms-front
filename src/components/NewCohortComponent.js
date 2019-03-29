@@ -46,7 +46,7 @@ class NewCohortComponent extends Component {
         cohortName: this.state.cohortName,
         trainerName: this.state.trainerName,
         week: this.state.cohortWeek,
-        cohortDescon: thisripti.state.cohortDescription
+        cohortDescription: this.state.cohortDescription
       }
     })
     .then(response => {
