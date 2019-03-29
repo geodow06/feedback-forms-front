@@ -17,10 +17,10 @@ class CohortManager extends Component {
 
     chooseCohort = (cohort) => {
         this.setState({ chosen: true, chosenCohort: cohort })
-    } 
+    }
 
-    back = () =>{ 
-        this.setState({chosen:false})
+    back = () => {
+        this.setState({ chosen: false }) 
     }
 
     render() {
@@ -30,15 +30,9 @@ class CohortManager extends Component {
             );
         }
 
-        // else if (this.state.chosen) {
-        //     return (
-        //         <SingleCohortComponent chosenCohort={this.chosenCohort} back={this.back}/>
-        //     );
-        // }
-
         else {
             return (
-                <a>you fucked up son</a>
+                <SingleCohortComponent chosenCohort={this.chosenCohort} back={this.back} />
             );
         }
     }

@@ -6,7 +6,7 @@ import * as constants from "../Consts.js";
 class SingleCohortComponent extends Component {
 
 	constructor(props) {
-		super();
+		super(props);
 
 	  this.state = {
 			cohort: {name:"null"},

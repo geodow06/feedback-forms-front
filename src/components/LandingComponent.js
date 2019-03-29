@@ -7,7 +7,7 @@ class LandingComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <a href="/register">REGISTERy</a>
+                        <a href="/register">REGISTER</a>
                     </div>
                     <div id="right-dashboard">
                         <div id="dashboard-item-2-not-logged">
