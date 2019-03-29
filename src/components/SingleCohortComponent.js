@@ -50,6 +50,10 @@ class SingleCohortComponent extends Component {
 		// 		})
 		// 	}
 		// })
+	} 
+
+	back=()=>{ 
+		this.props.back();
 	}
 
   render() {
@@ -79,7 +83,8 @@ class SingleCohortComponent extends Component {
 				<tbody>
 					{trainees}
 				</tbody>
-			</table>
+			</table> 
+			<button onClick={this.back}>BACK</button>
 		</div>
     );
   }
