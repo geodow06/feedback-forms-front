@@ -35,7 +35,8 @@ class CohortsComponent extends Component {
 
 			<div className="single-cohort" key={i} >
 			{/* <a href={"/singlecohort/" + cohort.cohortID} >  */}
-			<a onClick={this.chooseCohort(cohort)}> 
+			{/* onClick={this.chooseCohort(cohort)} */}
+			<a > 
 			{/* <button></button> */}
 				<p>Number: {cohort.cohortID}</p>
 				<p>{cohort.cohortName}</p>

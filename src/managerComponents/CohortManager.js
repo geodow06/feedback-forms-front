@@ -30,11 +30,11 @@ class CohortManager extends Component {
             );
         }
 
-        else if (this.state.chosen) {
-            return (
-                <SingleCohortComponent chosenCohort={this.chosenCohort} back={this.back}/>
-            );
-        }
+        // else if (this.state.chosen) {
+        //     return (
+        //         <SingleCohortComponent chosenCohort={this.chosenCohort} back={this.back}/>
+        //     );
+        // }
 
         else {
             return (
