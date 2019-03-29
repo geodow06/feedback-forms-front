@@ -6,8 +6,8 @@ import SingleCohortComponent from '../components/SingleCohortComponent';
 
 class CohortManager extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             chosen: false,
