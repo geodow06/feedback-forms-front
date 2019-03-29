@@ -16,7 +16,7 @@ import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
 import TrainerHomepageComponent from '../components/TrainerHomepageComponent';
-
+import CohortManager from '../managerComponents/CohortManager';
 
 
 class TrainerRoutes extends Component {
@@ -30,7 +30,8 @@ class TrainerRoutes extends Component {
 			<div>
 				<Route exact path="/login/" render={() => <TrainerHomepage />} />
 				<Route path="/login/form" render={() => <SubmitForm />} />
-				<Route path="/login/cohorts" render={() => <Cohorts />} />
+				<Route path="/login/cohorts" render={() => <Cohorts />} /> 
+				<Route path="/login/cohortmanager" render={() => <CohortManager />} /> 
 				<Route path="/login/trainees" render={() => <Trainees />} />
 				<Route path="/login/account" render={() => <Account />} />
 				<Route path="/login/cohort:id" render={() => <Cohort />} />

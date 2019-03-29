@@ -96,7 +96,7 @@ class LoginComponent extends Component {
 				<div className="main-body">
 					<div className="container">
 						<h1 id="heading">Login</h1>
-						<form >
+						<form onSubmit={this.logInRequest}>
 							<div className="row">
 								<div className="col-25">
 									<label htmlFor="email">Email Address</label>
@@ -115,7 +115,7 @@ class LoginComponent extends Component {
 							</div>
 							<div id="login-and-error" className="row">
 
-								<button id="login-button" type="submit" onClick={this.logInRequest}>Login</button>
+								<input id="login-button" type="submit" >Login</input>
 								<span id="error-message">{this.state.error}</span>
 							</div>
 						</form>
