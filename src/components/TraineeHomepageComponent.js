@@ -30,12 +30,12 @@ class TraineeHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <Link to="login/form">FORM</Link>
+                        <Link to="/login/form">FORM</Link>
                     </div>
 
                     <div id="right-dashboard">
                         <div id="dashboard-item-2">
-                            <Link to="login/account">ACCOUNT</Link>
+                            <Link to="/login/account">ACCOUNT</Link>
                         </div>
                         <div id="dashboard-item-3">
                             <Link to="/" onClick={()=>{Auth.logout(()=>{});}}>LOGOUT</Link>

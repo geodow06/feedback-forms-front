@@ -9,8 +9,8 @@ const cookies = new Cookies();
 
 class TrainerFormComponent extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             user: "",
@@ -80,18 +80,18 @@ class TrainerFormComponent extends Component {
     sendForm = () => {
         axios({
             method: 'post',
-            url: constants.gateway + 'sendForm',
+            url: `${constants.ip}${constants.gateway}createTrainerForm`,
             data: {
-                accountID: this.state.user.accountID,
-                cohortID: this.state.user.cohortID,
-                attitude: this.state.attitude,
-                attitudeScore: this.state.attitudeSliderValue,
-                tech: this.state.tech,
-                techScore: this.state.techSliderValue,
-                soft: this.state.soft,
-                softScore: this.state.softSliderValue,
-                comments: this.state.comments,
-                // week: this.state.week
+                accountID: this.props.match.params.id,
+                trainerID: cookies.get('id'),
+                formCount: this.props.match.params.formCount,
+                scores: [this.state.attitude,
+                this.state.tech,
+                this.state.soft],
+                answers: [this.state.attitudeSliderValue,
+                this.state.techSliderValue,
+                this.state.softSliderValue],
+                commentsForTrainee: this.state.comments,
             }
         })
     }
@@ -115,7 +115,8 @@ class TrainerFormComponent extends Component {
     //         })
     // } 
 
-    createFeedback = () => {
+    createFeedback = () => { 
+        console.log("formCount "+this.props.match.params.formCount)
         console.log("attitude value " + this.state.attitudeSliderValue);
         console.log("tech value " + this.state.techSliderValue);
         console.log("soft value " + this.state.softSliderValue);
@@ -129,7 +130,8 @@ class TrainerFormComponent extends Component {
         this.setState({
             attitude: event.target.value,
             attitudeChars: this.state.attitude.length + 1
-        });
+        }); 
+       
     }
 
     updatetech = (event) => {

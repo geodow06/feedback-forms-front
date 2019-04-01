@@ -63,6 +63,7 @@ class SingleUserComponent extends Component {
 				<td>Week: {feedback.formCount}</td>
 				<td>Score: {feedback.score}</td>
 				<td><Link to={"/login/viewform/" + feedback.traineeFormID} className="button">VIEW</Link></td>
+				<td><Link to={`/login/trainerform/${this.state.trainee.accountID}/${feedback.formCount}`} className="button">WRITE</Link></td>
 			</tr>
 		));
 
@@ -83,7 +84,8 @@ class SingleUserComponent extends Component {
 								<tr>
 									<td>Week</td>
 									<td>Score</td>
-									<td>View feedback</td>
+									<td>View feedback</td> 
+									<td>Write Feedback</td>
 								</tr>
 							</thead>
 							<tbody>

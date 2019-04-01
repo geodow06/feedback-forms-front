@@ -3,6 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import * as constants from "../Consts.js";
 import { Link } from "react-router-dom";
+import GraphComponent from './GraphComponent';
 class SingleCohortComponent extends Component {
 
 	constructor(props) {
@@ -45,6 +46,11 @@ class SingleCohortComponent extends Component {
 
 	}
 
+	updateCohortFormCount=()=>{ 
+		axios({method:'put', 
+	url:`${constants.ip}${constants.gateway}updateCount/${this.state.cohort.cohortID}`})
+	}
+
 	back = () => {
 		window.location = "/login/cohorts";
 	}
@@ -61,7 +67,8 @@ class SingleCohortComponent extends Component {
 
 		return (
 			<div className="main-body">
-				BLOOP
+				<GraphComponent/>
+				<button onClick={this.updateCohortFormCount}>BLOOP</button>
 			<h1>{this.state.cohort.Name}</h1>
 				<p>Trainer: {this.state.cohort.trainerName}</p>
 				<p>Description: {this.state.cohort.description}</p>
