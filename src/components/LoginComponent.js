@@ -12,7 +12,6 @@ import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
 import Cookies from 'universal-cookie';
-import Auth from '../Auth';  
 import NavBar from '../components/InitialNavBarComponent';
 import { Link } from 'react-router-dom'; 
 const cookies = new Cookies();
@@ -29,7 +28,6 @@ class LoginComponent extends Component {
 			email: "",
 			password: "",
 			error: "",
-			// loggedIn: false,
 			account: "",
 			type: ""
 		}
@@ -68,15 +66,6 @@ class LoginComponent extends Component {
 		})
 	}
 
-	// makeTrainer = () => {
-	// 	this.setState({ type: "trainer", loggedIn: true })
-	// }
-	// makeTrainee = () => {
-	// 	this.setState({ type: "trainee", loggedIn: true })
-	// }
-	// makeAdmin = () => {
-	// 	this.setState({ type: "admin", loggedIn: true })
-	// }
 	render() {
 		if (!auth.isAuthenticated()) {
 			return (
@@ -103,7 +92,7 @@ class LoginComponent extends Component {
 							</div>
 							<div id="login-and-error" className="row">
 
-								<button id="login-button" type="button" onClick={this.logInRequest}>Login</button>
+								<button id="login-button"  onClick={this.logInRequest}>Login</button>
 								<span id="error-message">{this.state.error}</span>
 							</div>
 						</form>

@@ -19,16 +19,43 @@ class TrainerFormComponent extends Component {
             techChars: 0,
             softChars: 0,
             commentsChars: 0,
+            formCount: this.props.match.params.formCount,
             tech: "",
             soft: "",
             comments: "",
             error: "",
-            attitudeSliderValue: 6,
-            techSliderValue: 6,
-            softSliderValue: 6,
+            attitudeSliderValue: "6",
+            techSliderValue: "6",
+            softSliderValue: "6",
             week: 0,
-            show: "show-form"
+            show: "show-form",
+            showComments: "no-show-form",
+            showButton: "show-form"
         }
+
+        axios({
+            method: 'get',
+            url: `${constants.ip}${constants.gateway}getTrainerFormsByTraineeID/${this.props.match.params.id}`
+        }).then(response => {
+            for (let i = 0; i < response.data.length; i++) {
+                console.log("response value" + response.data[i].formCount + "response value")
+                console.log("prop" + this.state.formCount + "prop")
+                console.log(typeof this.state.formCount)
+                console.log(typeof `${response.data[i].formCount}`)
+                if (`${response.data[i].formCount}` === this.state.formCount) {
+                    console.log(true)
+                    this.setState({
+                        error: "You already submitted your feedback for this week.",
+                        show: "no-show-form"
+                    })
+                    break;
+                }
+                else {
+                    console.log(false)
+                }
+            }
+        })
+
         // axios({
         //     method: 'get',
         //     url: constants.gateway + 'getAccounts'
@@ -77,23 +104,28 @@ class TrainerFormComponent extends Component {
         //     })
     }
 
+    showCommentField = () => {
+        this.setState({ showComments: "show-form", showButton: "no-show-form" })
+    }
+
     sendForm = () => {
         axios({
             method: 'post',
             url: `${constants.ip}${constants.gateway}createTrainerForm`,
             data: {
-                accountID: this.props.match.params.id,
+                traineeID: this.props.match.params.id,
                 trainerID: cookies.get('_id'),
                 formCount: this.props.match.params.formCount,
-                scores: [this.state.attitude,
+                answers: [this.state.attitude,
                 this.state.tech,
                 this.state.soft],
-                answers: [this.state.attitudeSliderValue,
+                scores: [this.state.attitudeSliderValue,
                 this.state.techSliderValue,
                 this.state.softSliderValue],
-                commentsForTrainee: this.state.comments,
+                commentsForTrainee: this.state.comments
             }
-        })
+        }).then(window.location = `/login/singleuser/${this.props.match.params.id}`)
+
     }
     // createFeedback = () => {
     //     axios({
@@ -115,8 +147,10 @@ class TrainerFormComponent extends Component {
     //         })
     // } 
 
-    createFeedback = () => { 
-        console.log("formCount "+this.props.match.params.formCount)
+    createFeedback = () => {
+        console.log("accountID " + this.props.match.params.id)
+        console.log("trainerID" + cookies.get('_id'))
+        console.log("formCount " + this.props.match.params.formCount)
         console.log("attitude value " + this.state.attitudeSliderValue);
         console.log("tech value " + this.state.techSliderValue);
         console.log("soft value " + this.state.softSliderValue);
@@ -130,8 +164,8 @@ class TrainerFormComponent extends Component {
         this.setState({
             attitude: event.target.value,
             attitudeChars: this.state.attitude.length + 1
-        }); 
-       
+        });
+
     }
 
     updatetech = (event) => {
@@ -245,7 +279,9 @@ class TrainerFormComponent extends Component {
                                     <textarea id="soft" name="soft" onChange={this.updatesoft} />
                                     <div>{this.state.softChars}/50</div>
                                 </div>
-                                <div>
+                                <input type="checkbox" name="Checkbox1" onChange={this.showCommentField}></input>
+                                <label for="Checkbox1">check to add a comment for the trainee</label>
+                                <div id={this.state.showComments}>
                                     <p>Comments to be seen by trainee</p>
                                     <textarea id="comments" name="comments" onChange={this.updateComments} />
                                     <div>{this.state.commentsChars}/50</div>
