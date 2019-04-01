@@ -3,7 +3,9 @@ import '../App.css';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 import * as constants from "../Consts.js";
-
+import { Link } from 'react-router-dom';  
+import Auth from '../Auth';
+import NavBar from '../components/InitialNavBarComponent';
 class RegisterComponent extends Component {
 
   constructor() {
@@ -68,7 +70,7 @@ class RegisterComponent extends Component {
 
     axios({
       method: "post",
-      url: constants.gateway + 'createAccount',
+      url: `${constants.ip}${constants.gateway}createAccount`,
       data: {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
@@ -106,6 +108,7 @@ class RegisterComponent extends Component {
   render() {
     return (
       <div className="main-body">
+       <NavBar/>
         <div className="container">
           <h1 id="heading">Register Account</h1>
           <form onSubmit={this.handleSubmit}>

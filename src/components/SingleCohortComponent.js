@@ -16,10 +16,9 @@ class SingleCohortComponent extends Component {
 			description: "",
 			traineesList: []
 		}
-		console.log("Path:", `${constants.ip}${constants.gateway}getCohortByCohortID/${props.match.params.id}`);
+		
 		axios({
 			method: 'get',
-			// 	// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
 			url: `${constants.ip}${constants.gateway}getCohortByCohortID/${props.match.params.id}`
 		}).then(response => {
 
@@ -35,6 +34,12 @@ class SingleCohortComponent extends Component {
 			})
 		}).catch(error => {
 			console.log("Error:", error);
+		}) 
+
+		axios({method:'get' ,
+		url:`${constants.ip}${constants.gateway}getAccountsByCohortID/${props.match.params.id}`
+		}).then(response=>{ 
+			this.setState({traineesList:response.data})
 		})
 
 
@@ -50,7 +55,7 @@ class SingleCohortComponent extends Component {
 			<tr key={i}>
 				<td>{trainee.firstName + " " + trainee.lastName}</td>
 				<td>{trainee.email}</td>
-				<td><Link to={"login/singleuser/" + trainee.accountID} className="button">VIEW</Link></td>
+				<td><Link to={"/login/singleuser/"+trainee.accountID} className="button">VIEW</Link></td>
 			</tr>
 		));
 

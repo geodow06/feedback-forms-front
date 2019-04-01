@@ -19,7 +19,7 @@ class TraineeRoutes extends Component {
 		return (
 			<div>
 				<Route exact path="/login/" render={() => <TraineeHomepage/>} />
-				<Route path="login/form/" render={()=><Form/>} />
+				<Route path="/login/form/" render={()=><Form/>} />
 				
 			</div>
 		)

@@ -6,11 +6,12 @@ import {
 import LandingComponent from '../components/LandingComponent';
 import Register from '../components/RegisterComponent';
 import Login from '../components/LoginComponent'; 
-
+import NavBar from '../components/NavbarComponent';
 class LandingRoute extends Component {
     render() {
         return (
-            <div>
+            <div> 
+                {/* <NavBar/> */}
                 <Route exact path="/" component={LandingComponent} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} /> 

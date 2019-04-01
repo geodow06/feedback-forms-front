@@ -12,8 +12,11 @@ import TrainerRoute from '../routers/TrainerRoutes';
 import TraineeRoute from '../routers/TraineeRoutes';
 import AdminRoute from '../routers/AdminRoutes';
 import Cookies from 'universal-cookie';
-import NavBar from './NavbarComponent';
+import Auth from '../Auth';  
+import NavBar from '../components/InitialNavBarComponent';
+import { Link } from 'react-router-dom'; 
 const cookies = new Cookies();
+
 
 class LoginComponent extends Component {
 
@@ -78,6 +81,7 @@ class LoginComponent extends Component {
 		if (!auth.isAuthenticated()) {
 			return (
 				<div className="main-body">
+					<NavBar/>
 					<div className="container">
 						<h1 id="heading">Login</h1>
 						<form>

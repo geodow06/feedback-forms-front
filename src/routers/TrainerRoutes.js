@@ -16,7 +16,7 @@ import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
 import CohortManager from '../managerComponents/CohortManager';
-
+import NavBar from '../components/NavbarComponent';
 class TrainerRoutes extends Component {
 
 	constructor(props) {
@@ -25,7 +25,8 @@ class TrainerRoutes extends Component {
 
 	render() {
 		return (
-			<div>
+			<div> 
+				<NavBar/>
 				<Route exact path="/login/" render={() => <TrainerHomepage />} />
 				<Route path="/login/form" render={() => <SubmitForm />} />
 				<Route path="/login/cohorts" render={() => <Cohorts />} />
