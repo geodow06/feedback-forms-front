@@ -19,7 +19,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.gateway + 'getCohorts'
+			url: `http://35.246.12.195${constants.gateway}getCohorts/`
 		}).then(response => {
 			this.setState({
 				cohortList: response.data,
@@ -31,7 +31,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: constants.gateway + 'getAccounts'
+			url: `http://35.246.12.195${constants.gateway}getAccounts`
 		}).then(response => {
 
 			let uList = [];
@@ -42,9 +42,9 @@ class TraineeComponent extends Component {
 			})
 
 			for (let i = 0; i < response.data.length; i++) {
-				if (response.data[i].cohortID === null && response.data[i].admin === false) {
+				if (response.data[i].cohortID === null && response.data[i].type === "trainee") {
 					uList.push(response.data[i]);
-				} else if (response.data[i].cohortID != null && response.data[i].admin === false) {
+				} else if (response.data[i].cohortID != null && response.data[i].type === "trainee") {
 					aList.push(response.data[i]);
 				}
 			}
@@ -67,14 +67,15 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'put',
-			url: constants.gateway + 'updateAccountBy_id/' + unassigned._id,
+			url: `http://35.246.12.195${constants.gateway}updateAccountByID/${unassigned.accountID}`,
 			data: {
 				accountID: unassigned.accountID,
 				firstName: unassigned.firstName,
 				lastName: unassigned.lastName,
 				email: unassigned.email,
 				password: unassigned.password,
-				cohortID: this.state.cohortNumber
+				cohortID: this.state.cohortNumber, 
+				type:unassigned.type
 			}
 		})
 			.then(response => {
@@ -85,14 +86,16 @@ class TraineeComponent extends Component {
 	unAssign = (assigned) => {
 		axios({
 			method: 'put',
-			url: constants.gateway + 'updateAccountBy_id/' + assigned._id,
+			url: `http://35.246.12.195${constants.gateway}updateAccountByID/${assigned.accountID}`,
+			
 			data: {
 				accountID: assigned.accountID,
 				firstName: assigned.firstName,
 				lastName: assigned.lastName,
 				email: assigned.email,
 				password: assigned.password,
-				cohortID: null
+				cohortID: null, 
+				type:assigned.type
 			}
 		})
 			.then(response => {

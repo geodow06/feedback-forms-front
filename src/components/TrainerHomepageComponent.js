@@ -79,7 +79,7 @@ class TrainerHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <a href="/login/cohortmanager">COHORTS ({this.state.cohorts})</a>
+                        <a href="/login/cohorts">COHORTS ({this.state.cohorts})</a>
                     </div>
 
                     <div id="right-dashboard">

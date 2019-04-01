@@ -45,11 +45,7 @@ class LoginComponent extends Component {
 	}
 
 	logInRequest = () => {
-		axios({
-			method: 'get',
-			url: `${constants.gateway}/getAccountByEmail/${this.state.email}`,
-
-		}).then(response => {
+		axios.get(`http://35.246.12.195${constants.gateway}getAccountByEmail/${this.state.email}`).then(response => {
 			let message = "";
 			this.setState({
 				account: response.data
@@ -113,7 +109,7 @@ class LoginComponent extends Component {
 		}
 		else if (cookies.get('type') === "trainer") {
 			return (
-						<TrainerRoute account={this.state.account} />
+				<TrainerRoute account={this.state.account} />
 			);
 
 
