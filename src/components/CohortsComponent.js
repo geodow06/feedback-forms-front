@@ -16,7 +16,7 @@ class CohortsComponent extends Component {
 		axios({
 			method: 'get',
 			// url: constants.get + 'getCohorts'
-			url: constants.gateway + 'getCohorts'
+			url: `http://35.246.12.195${constants.gateway}getCohorts`,
 		}).then(response => {
 			this.setState({
 				cohortList: response.data

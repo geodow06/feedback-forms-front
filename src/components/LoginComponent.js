@@ -47,7 +47,7 @@ class LoginComponent extends Component {
 	logInRequest = () => {
 		axios({
 			method: 'get',
-			url: `${constants.gateway}/getAccountByEmail/${this.state.email}`,
+			url: `http://35.246.12.195${constants.gateway}getAccountByEmail/${this.state.email}`,
 
 		}).then(response => {
 			let message = "";
