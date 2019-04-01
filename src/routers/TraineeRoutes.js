@@ -18,19 +18,12 @@ class TraineeRoutes extends Component {
 		super(props);
 	}
 
-	logOut1 = () => {
-		this.props.logOut();
-	}
-
 	render() {
 		return (
 			<div>
-				<Route exact path="/login/" render={() => <TraineeHomepage logOut1={this.logOut1} />} />
-				<Route exact path="/login/home" component={TraineeHomepage} />
-				<Route path="/singlecohort/:id" component={Cohort} />
-				<Route path="/singleuser/:id" component={User} />
-				<Route path="/viewform/:id" component={ViewForm} />
-				<Route path="/newcohort" component={NewCohort} />
+				<Route exact path="/login/" render={() => <TraineeHomepage/>} />
+				{/* <Route path="login/viewform/:id" component={ViewForm} />
+				<Route path="login/newcohort" component={NewCohort} /> */}
 			</div>
 		)
 	}

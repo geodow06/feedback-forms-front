@@ -16,11 +16,11 @@ class SingleCohortComponent extends Component {
 			description: "",
 			traineesList: []
 		}
-		console.log("Path:", `http://35.246.12.195${constants.gateway}getCohortByCohortID/${props.match.params.id}`);
+		console.log("Path:", `${constants.ip}${constants.gateway}getCohortByCohortID/${props.match.params.id}`);
 		axios({
 			method: 'get',
 			// 	// url: constants.get + '/cohorts/getCohortById/' + props.match.params.id
-			url: `http://35.246.12.195${constants.gateway}getCohortByCohortID/${props.match.params.id}`
+			url: `${constants.ip}${constants.gateway}getCohortByCohortID/${props.match.params.id}`
 		}).then(response => {
 
 			console.log("Response:", response.data);

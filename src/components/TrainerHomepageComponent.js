@@ -21,10 +21,6 @@ class TrainerHomepageComponent extends Component {
 
         }
     }
-    
-    logOut2=()=>{ 
-        this.props.logOut1();
-    }
 
         // axios({
         //     method: 'get',
@@ -79,16 +75,16 @@ class TrainerHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        <a href="/login/cohorts">COHORTS ({this.state.cohorts})</a>
+                        <Link to="/login/cohorts">COHORTS ({this.state.cohorts})</Link>
                     </div>
 
                     <div id="right-dashboard">
                         <div id="dashboard-item-2">
-                            <a href="/login/trainees">TRAINEES ({this.state.unassignedList})</a>
+                            <Link to="/login/trainees">TRAINEES ({this.state.unassignedList})</Link>
                         </div>
                         <div id="dashboard-item-3">
                             {/* <button onClick={this.logOut2}>LOGOUT</button> */}
-                            <a href="/" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</a>
+                            <Link to="/" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</Link>
                         </div>
                     </div>
                 </div>

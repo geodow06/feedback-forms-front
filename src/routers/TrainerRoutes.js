@@ -15,7 +15,6 @@ import Cohort from '../components/SingleCohortComponent';
 import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
-import TrainerHomepageComponent from '../components/TrainerHomepageComponent';
 import CohortManager from '../managerComponents/CohortManager';
 
 class TrainerRoutes extends Component {

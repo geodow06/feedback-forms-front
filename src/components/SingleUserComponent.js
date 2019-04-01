@@ -20,7 +20,7 @@ class SingleUserComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: `http://35.246.12.195${constants.gateway}'getAccountByAccountID/'${props.match.params.id}`
+			url: `${constants.ip}${constants.gateway}'getAccountByAccountID/'${props.match.params.id}`
 		}).then(response => {
 
 			this.setState({
@@ -31,7 +31,7 @@ class SingleUserComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: `http://35.246.12.195${constants.gateway}'getFeedbackFormsByAccountID/'${props.match.params.id}`
+			url: `${constants.ip}${constants.gateway}'getFeedbackFormsByAccountID/'${props.match.params.id}`
 		}).then(response => {
 
 			if (response.data.length < 5) {
@@ -67,7 +67,7 @@ class SingleUserComponent extends Component {
 	flagTrainee = () => {
 		axios({
 			method: 'put',
-			url: constants.gateway + 'updateAccountBy_id/' + this.state.trainee._id,
+			url: `${constants.ip}${constants.gateway}updateAccountByID/${this.state.trainee.accountID}`,
 			data: {
 				accountID: this.state.trainee.accountID,
 				admin: this.state.trainee.admin,
