@@ -10,13 +10,14 @@ class ViewFormComponent extends Component {
 
 		this.state = ({
 			feedbackList: "",
-			user: "", 
-			traineeForm:""
+			user: "",
+			traineeForm: ""
 		})
 
 		axios({
 			method: 'get',
-			url: constants.gateway + 'getFeedbackFormByID/' + props.match.params.id
+			url: `${constants.ip}${constants.gateway}getFeebackFormByID/${props.match.params.id}`
+
 		}).then(response => {
 
 			this.setState({
@@ -25,7 +26,8 @@ class ViewFormComponent extends Component {
 
 			axios({
 				method: 'get',
-				url: constants.gateway + 'getAccountByAccountID/' + response.data.accountID
+				url: `${constants.ip}${constants.gateway}getAccountByAccountID/${response.data.accountID}`
+
 			}).then(res => {
 				this.setState({
 					user: res.data
@@ -34,7 +36,8 @@ class ViewFormComponent extends Component {
 		})
 
 		ViewFormComponent = () => {
-			axios.get(`${constants.gateway}getTraineeForm/${this.props.account.id}`
+			axios.get(`${constants.ip}${constants.gateway}getTraineeForm/${this.props.account.id}`
+
 			).then(
 				f => { this.setState({ traineeForm: f.data }) }
 			)

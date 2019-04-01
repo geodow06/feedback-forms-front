@@ -92,7 +92,7 @@ class SingleUserComponent extends Component {
 			<tr key={i}>
 				<td>Week: {feedback.week}</td>
 				<td>Score: {feedback.score}</td>
-				<td><a href={"/viewform/" + feedback.feedbackID} className="button">VIEW</a></td>
+				<td><Link to={"/viewform/" + feedback.feedbackID} className="button">VIEW</Link></td>
 			</tr>
 		));
 

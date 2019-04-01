@@ -9,8 +9,8 @@ const cookies = new Cookies();
 
 class FormComponent extends Component {
 
-	constructor() {
-	 	super();
+	constructor(props) {
+	 	super(props);
 
 	  	this.state = {
 	  		user: "",
@@ -26,7 +26,8 @@ class FormComponent extends Component {
 	  	}
 			axios({
 	      method:'get',
-	      url: constants.gateway + 'getAccounts'
+				url: `${constants.ip}${constants.gateway}getAccounts`
+				
 	  	})
 	  	.then(response => {
 	  		for (let i = 0; i < response.data.length; i++) {
@@ -45,7 +46,7 @@ class FormComponent extends Component {
 
 				axios({
 					method: 'get',
-					url: constants.gateway + "getCohortByCohortID/" + this.state.user.cohortID
+					url: `${constants.ip}${constants.gateway}getCohortByCohortID/${this.state.user.cohortID}`
 				})
 				.then(response => {
 					this.setState({
@@ -54,7 +55,8 @@ class FormComponent extends Component {
 					
 					axios({
 						method: 'get',
-						url: constants.gateway + "getFeedbackFormsByAccountID/" + this.state.user.accountID
+						url: 	`${constants.ip}${constants.gateway}getFeedbackFormsByAccountID/${this.state.user.accountID}`
+					
 					})
 					.then(response => {
 						for (let k = 0; k < response.data.length; k++) {
@@ -75,7 +77,7 @@ class FormComponent extends Component {
   createFeedback = () => {
     axios({
       method: 'post',
-      url: constants.gateway + 'addFeedbackForm',
+      url: `${constants.ip}${constants.gateway}addFeedbackForm`,
       data: {
       	accountID: this.state.user.accountID,
       	cohortID: this.state.user.cohortID,

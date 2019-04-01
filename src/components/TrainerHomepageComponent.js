@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 import axios from 'axios';
 import * as constants from "../Consts.js";
 import Auth from '../Auth';
-
+import { Link } from "react-router-dom";
 const cookies = new Cookies();
 
 class TrainerHomepageComponent extends Component {

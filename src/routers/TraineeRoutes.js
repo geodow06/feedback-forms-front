@@ -7,10 +7,7 @@ import { UnprotectedRoute } from '../Unprotected.route';
 import { TraineeprotectedRoute } from '../Traineeprotected.route';
 
 import TraineeHomepage from '../components/TraineeHomepageComponent';
-import Cohort from '../components/SingleCohortComponent';
-import User from '../components/SingleUserComponent';
-import ViewForm from '../components/ViewFormComponent';
-import NewCohort from '../components/NewCohortComponent';
+import Form from '../components/FormComponent';
 
 class TraineeRoutes extends Component {
 
@@ -22,8 +19,8 @@ class TraineeRoutes extends Component {
 		return (
 			<div>
 				<Route exact path="/login/" render={() => <TraineeHomepage/>} />
-				{/* <Route path="login/viewform/:id" component={ViewForm} />
-				<Route path="login/newcohort" component={NewCohort} /> */}
+				<Route path="login/form/" render={()=><Form/>} />
+				
 			</div>
 		)
 	}
