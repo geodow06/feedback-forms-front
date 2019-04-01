@@ -83,7 +83,7 @@ class TrainerFormComponent extends Component {
             url: `${constants.ip}${constants.gateway}createTrainerForm`,
             data: {
                 accountID: this.props.match.params.id,
-                trainerID: cookies.get('id'),
+                trainerID: cookies.get('_id'),
                 formCount: this.props.match.params.formCount,
                 scores: [this.state.attitude,
                 this.state.tech,
@@ -253,7 +253,7 @@ class TrainerFormComponent extends Component {
 
                             </div>
                             <div className="row">
-                                <button id="register-button" type="button" onClick={this.createFeedback}>Create</button>
+                                <button id="register-button" type="button" onClick={this.sendForm}>Create</button>
                             </div>
                         </div>
                     </form>
