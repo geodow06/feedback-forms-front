@@ -19,7 +19,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: `http://35.246.12.195${constants.gateway}getCohorts/`
+			url: `${constants.ip}${constants.gateway}getCohorts/`
 		}).then(response => {
 			this.setState({
 				cohortList: response.data,
@@ -31,7 +31,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'get',
-			url: `http://35.246.12.195${constants.gateway}getAccounts`
+			url: `${constants.ip}${constants.gateway}getAccounts`
 		}).then(response => {
 
 			let uList = [];
@@ -67,7 +67,7 @@ class TraineeComponent extends Component {
 
 		axios({
 			method: 'put',
-			url: `http://35.246.12.195${constants.gateway}updateAccountByID/${unassigned.accountID}`,
+			url: `${constants.ip}${constants.gateway}updateAccountByID/${unassigned.accountID}`,
 			data: {
 				accountID: unassigned.accountID,
 				firstName: unassigned.firstName,
@@ -86,7 +86,7 @@ class TraineeComponent extends Component {
 	unAssign = (assigned) => {
 		axios({
 			method: 'put',
-			url: `http://35.246.12.195${constants.gateway}updateAccountByID/${assigned.accountID}`,
+			url: `${constants.ip}${constants.gateway}updateAccountByID/${assigned.accountID}`,
 			
 			data: {
 				accountID: assigned.accountID,
@@ -102,7 +102,6 @@ class TraineeComponent extends Component {
 				let uL = this.state.unassignedList;
 				uL.push(assigned);
 				let aL = this.state.assignedList.filter(a => a != assigned);
-				console.log("AL: ")
 				this.setState({ unassignedList: uL, assignedList: aL});
 			})
 	}

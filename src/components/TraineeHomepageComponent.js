@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../App.css';
-import auth from '../Auth';
 import Cookies from 'universal-cookie';
 import axios from 'axios';
 import * as constants from "../Consts.js";
-
+import Auth from '../Auth';
+import { Link } from "react-router-dom";
 const cookies = new Cookies();
 
 class TraineeHomepageComponent extends Component {
@@ -21,57 +21,8 @@ class TraineeHomepageComponent extends Component {
         }
 
     }
-    //     axios({
-    //         method: 'get',
-    //         url: constants.gateway + 'getAccounts'
-    //     }).then(response => {
+   
 
-    //         let uList = [];
-
-    //         this.setState({
-    //             trainees: response.data
-    //         })
-    //         for (let i = 0; i < response.data.length; i++) {
-    //             if (response.data[i].cohortID === null && response.data[i].admin === false) {
-    //                 uList.push(response.data[i]);
-    //             }
-    //         }
-    //         this.setState({
-    //             unassignedList: uList.length
-    //         })
-    //     })
-
-    //     axios({
-    //         method: 'get',
-    //         url: constants.gateway + 'getCohorts'
-    //     }).then(response => {
-    //         let date = new Date();
-    //         let currentDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
-    //         this.setState({
-    //             cohorts: response.data.length
-    //         })
-    //         this.updateWeek(currentDate);
-    //     })
-    // }
-
-    // updateWeek = (currentDate) => {
-    //     if (this.state.timeUpdate !== currentDate) {
-    //         for (let i = 1; i <= this.state.cohorts; i++) {
-    //             axios({
-    //                 method: 'put',
-    //                 url: constants.gateway + 'updateWeekNumber/' + i
-    //             })
-    //         }
-    //         this.setState({
-    //             timeUpdate: currentDate
-    //         })
-    //     }
-
-    // }
-
-    logOut2 = () => {
-        this.props.logOut1();
-    }
 
     render() {
 
@@ -79,15 +30,15 @@ class TraineeHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
                     <div id="dashboard-item-1">
-                        {<a href="/form">FORM</a>}
+                        <Link to="login/form">FORM</Link>
                     </div>
 
                     <div id="right-dashboard">
                         <div id="dashboard-item-2">
-                            {<a href="/account">ACCOUNT</a>}
+                            <Link to="login/account">ACCOUNT</Link>
                         </div>
                         <div id="dashboard-item-3">
-                            {<a href="/login" onClick={this.logOut1}>LOGOUT</a>}
+                            <Link to="/" onClick={()=>{Auth.logout(()=>{});}}>LOGOUT</Link>
                         </div>
                     </div>
                 </div>
