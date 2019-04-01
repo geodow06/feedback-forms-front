@@ -9,7 +9,7 @@ import { TraineeprotectedRoute } from '../Traineeprotected.route';
 import TrainerHomepage from '../components/TrainerHomepageComponent';
 import SubmitForm from '../components/FormComponent';
 import Cohorts from '../components/CohortsComponent';
-import Trainees from '../components/TraineesComponent.1';
+import Trainees from '../components/TraineesComponent';
 import Account from '../components/AccountComponent';
 import Cohort from '../components/SingleCohortComponent';
 import User from '../components/SingleUserComponent';
@@ -36,8 +36,8 @@ class TrainerRoutes extends Component {
 				<Route path="/login/account" render={() => <Account />} />
 				<Route path="/login/singlecohort/:id" render={(props) => <Cohort match={props.match} />} />
 				<Route path="/login/newcohort" render={() => <NewCohort />} />
-				<Route path="/login/viewform:id" render={() => <ViewForm />} />
-				<Route path="/login/singleuser/:id" render={() => <User />} />
+				<Route path="/login/viewform/:id" render={(props) => <ViewForm match={props.match}/>} />
+				<Route path="/login/singleuser/:id" render={(props) => <User match={props.match}/>} />
 			</div>
 		)
 	}
