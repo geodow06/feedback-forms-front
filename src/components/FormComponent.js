@@ -22,7 +22,8 @@ class FormComponent extends Component {
 			error: "",
 			sliderValue: 6,
 			week: 0,
-			show: "show-form"
+			show: "show-form", 
+			formCount:""
 		}
 		axios({
 			method: 'get',
@@ -49,7 +50,7 @@ class FormComponent extends Component {
 				})
 					.then(response => {
 						this.setState({
-							week: response.data.week
+							formCount: response.data.formCount
 						})
 
 						axios({
@@ -57,18 +58,18 @@ class FormComponent extends Component {
 							url: `${constants.ip}${constants.gateway}getTraineeFormsByTraineeID/${this.state.user.accountID}`
 
 						})
-							// .then(response => {
-							// 	for (let k = 0; k < response.data.length; k++) {
-							// 		if (response.data[k].week === this.state.week || this.state.user.cohortID === null) {
-							// 			this.setState({
-							// 				error: "You already submitted this week. Try again next week.",
-							// 				show: "no-show-form"
-							// 			})
+							.then(response => {
+								for (let k = 0; k < response.data.length; k++) {
+									if (response.data[k].formCount === this.state.formCount || this.state.user.cohortID === null) {
+										this.setState({
+											error: "You already submitted this week. Try again next week.",
+											show: "no-show-form"
+										})
 
-							// 			break;
-							// 		}
-							// 	}
-							// })
+										break;
+									}
+								}
+							})
 					})
 			})
 	}
@@ -87,7 +88,7 @@ class FormComponent extends Component {
 				this.state.question3,
 				this.state.question4]
 				,
-				formCount: 3
+				formCount: this.state.formCount
 			}
 		})
 			.then(window.location = "/login/"

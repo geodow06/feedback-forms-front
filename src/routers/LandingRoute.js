@@ -11,7 +11,6 @@ class LandingRoute extends Component {
     render() {
         return (
             <div> 
-                {/* <NavBar/> */}
                 <Route exact path="/" component={LandingComponent} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} /> 

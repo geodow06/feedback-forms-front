@@ -16,7 +16,8 @@ import User from '../components/SingleUserComponent';
 import ViewForm from '../components/ViewFormComponent';
 import NewCohort from '../components/NewCohortComponent';
 import CohortManager from '../managerComponents/CohortManager';
-import NavBar from '../components/NavbarComponent';
+import NavBar from '../components/NavbarComponent'; 
+import TrainerForm from '../components/TrainerFormComponent';
 class TrainerRoutes extends Component {
 
 	constructor(props) {
@@ -37,7 +38,8 @@ class TrainerRoutes extends Component {
 				<Route path="/login/singlecohort/:id" render={(props) => <Cohort match={props.match} />} />
 				<Route path="/login/newcohort" render={() => <NewCohort />} />
 				<Route path="/login/viewform/:id" render={(props) => <ViewForm match={props.match}/>} />
-				<Route path="/login/singleuser/:id" render={(props) => <User match={props.match}/>} />
+				<Route path="/login/singleuser/:id" render={(props) => <User match={props.match}/>} /> 
+				<Route path="/login/trainerform/:id/:formCount" render={(props)=><TrainerForm match={props.match}/>}></Route>
 			</div>
 		)
 	}

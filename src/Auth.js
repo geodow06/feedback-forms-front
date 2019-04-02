@@ -4,8 +4,8 @@ const cookies = new Cookies();
 
 class Auth {
 
-	constructor(){
-		if (cookies.get('email') === undefined)	{
+	constructor() {
+		if (cookies.get('email') === undefined) {
 			this.authenticated = false;
 		}
 		else {
@@ -24,12 +24,12 @@ class Auth {
 	}
 
 	logout(cb) {
-			cookies.remove('email');
-			cookies.remove('_id');
-			cookies.remove('type');
-			this.authenticated = false;
-		setTimeout(function(){
-		}, 1000);
+		cookies.remove('email');
+		cookies.remove('_id');
+		cookies.remove('type');
+		this.authenticated = false;
+		// setTimeout(function(){
+		// }, 1000);
 	}
 
 	isAuthenticated() {
