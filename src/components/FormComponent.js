@@ -153,7 +153,7 @@ class FormComponent extends Component {
 							</div>
 						</div>
 						<div className="row">
-							<div className="col-100">
+							<div className="col-100">	
 								<textarea id="question1" name="question1" onChange={this.updateQuestion1} />
 								<div>{this.state.question1Chars}/50</div>
 							</div>

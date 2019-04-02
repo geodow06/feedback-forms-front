@@ -22,51 +22,37 @@ class TrainerHomepageComponent extends Component {
         }
     }
 
-        // axios({
-        //     method: 'get',
-        //     url: constants.gateway + 'getAccounts'
-        // }).then(response => {
+    // axios({
+    //     method: 'get',
+    //     url: constants.gateway + 'getAccounts'
+    // }).then(response => {
 
-        //     let uList = [];
+    //     let uList = [];
 
-        //     this.setState({
-        //         trainees: response.data
-        //     })
-        //     for (let i = 0; i < response.data.length; i++) {
-        //         if (response.data[i].cohortID === null && response.data[i].admin === false) {
-        //             uList.push(response.data[i]);
-        //         }
-        //     }
-        //     this.setState({
-        //         unassignedList: uList.length
-        //     })
-        // })
-
-        // axios({
-        //     method: 'get',
-        //     url: constants.gateway + 'getCohorts'
-        // }).then(response => {
-        //     let date = new Date();
-        //     let currentDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
-        //     this.setState({
-        //         cohorts: response.data.length
-        //     })
-        //     this.updateWeek(currentDate);
-        // })
-    
-
-    // updateWeek = (currentDate) => {
-    //     if (this.state.timeUpdate !== currentDate) {
-    //         for (let i = 1; i <= this.state.cohorts; i++) {
-    //             axios({
-    //                 method: 'put',
-    //                 url: constants.gateway + 'updateWeekNumber/' + i
-    //             })
+    //     this.setState({
+    //         trainees: response.data
+    //     })
+    //     for (let i = 0; i < response.data.length; i++) {
+    //         if (response.data[i].cohortID === null && response.data[i].admin === false) {
+    //             uList.push(response.data[i]);
     //         }
-    //         this.setState({
-    //             timeUpdate: currentDate
-    //         })
     //     }
+    //     this.setState({
+    //         unassignedList: uList.length
+    //     })
+    // })
+
+    // axios({
+    //     method: 'get',
+    //     url: constants.gateway + 'getCohorts'
+    // }).then(response => {
+    //     let date = new Date();
+    //     let currentDate = (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+    //     this.setState({
+    //         cohorts: response.data.length
+    //     })
+    //     this.updateWeek(currentDate);
+    // })
 
 
     render() {
@@ -74,18 +60,18 @@ class TrainerHomepageComponent extends Component {
         return (
             <div className="main-body">
                 <div className="home-body">
-                    <div id="dashboard-item-1">
-                        <Link to="/login/cohorts">COHORTS ({this.state.cohorts})</Link>
-                    </div>
+
+                    <Link id="dashboard-item-1" to="/login/cohorts">COHORTS ({this.state.cohorts})</Link>
+
 
                     <div id="right-dashboard">
-                        <div id="dashboard-item-2">
-                            <Link to="/login/trainees">TRAINEES ({this.state.unassignedList})</Link>
-                        </div>
-                        <div id="dashboard-item-3">
-                            {/* <button onClick={this.logOut2}>LOGOUT</button> */}
-                            <Link to="/" onClick={() => {Auth.logout(()=>{});}}>LOGOUT</Link>
-                        </div>
+
+                        <Link id="dashboard-item-2" to="/login/trainees">TRAINEES ({this.state.unassignedList})</Link>
+
+
+                        {/* <button onClick={this.logOut2}>LOGOUT</button> */}
+                        <Link id="dashboard-item-3" to="/" onClick={() => { Auth.logout(() => { }); }}>LOGOUT</Link>
+
                     </div>
                 </div>
             </div>

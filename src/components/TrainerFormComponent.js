@@ -4,7 +4,8 @@ import '../js/form';
 import axios from 'axios';
 import * as constants from "../Consts.js";
 import Cookies from 'universal-cookie';
-
+import { send } from 'q';
+import ViewTrainerForm from './ViewTrainerFormComponent';
 const cookies = new Cookies();
 
 class TrainerFormComponent extends Component {
@@ -30,7 +31,10 @@ class TrainerFormComponent extends Component {
             week: 0,
             show: "show-form",
             showComments: "no-show-form",
-            showButton: "show-form"
+            showButton: "show-form",
+            showFeedback: "no-show-form",
+            completedForm: "",
+            trainee: {}
         }
 
         axios({
@@ -38,15 +42,12 @@ class TrainerFormComponent extends Component {
             url: `${constants.ip}${constants.gateway}getTrainerFormsByTraineeID/${this.props.match.params.id}`
         }).then(response => {
             for (let i = 0; i < response.data.length; i++) {
-                console.log("response value" + response.data[i].formCount + "response value")
-                console.log("prop" + this.state.formCount + "prop")
-                console.log(typeof this.state.formCount)
-                console.log(typeof `${response.data[i].formCount}`)
                 if (`${response.data[i].formCount}` === this.state.formCount) {
-                    console.log(true)
                     this.setState({
                         error: "You already submitted your feedback for this week.",
-                        show: "no-show-form"
+                        show: "no-show-form",
+                        completedForm: response.data[i],
+                        showFeedback: "show-form"
                     })
                     break;
                 }
@@ -56,52 +57,12 @@ class TrainerFormComponent extends Component {
             }
         })
 
-        // axios({
-        //     method: 'get',
-        //     url: constants.gateway + 'getAccounts'
-        // })
-        //     .then(response => {
-        //         for (let i = 0; i < response.data.length; i++) {
-        //             if (cookies.get('_id') == response.data[i].accountID) {
-        //                 if (response.data[i].cohortID == null) {
-        //                     this.setState({
-        //                         error: "You have not been assigned a cohort yet, please speak with your trainer.",
-        //                         show: "no-show-form"
-        //                     })
-        //                 }
-        //                 this.setState({
-        //                     user: response.data[i]
-        //                 })
-        //             }
-        //         }
-
-        //         axios({
-        //             method: 'get',
-        //             url: constants.gateway + "getCohortByCohortID/" + this.state.user.cohortID
-        //         })
-        //             .then(response => {
-        //                 this.setState({
-        //                     week: response.data.week
-        //                 })
-
-        //                 axios({
-        //                     method: 'get',
-        //                     url: constants.gateway + "getFeedbackFormsByAccountID/" + this.state.user.accountID
-        //                 })
-        //                     .then(response => {
-        //                         for (let k = 0; k < response.data.length; k++) {
-        //                             if (response.data[k].week == this.state.week || this.state.user.cohortID === null) {
-        //                                 this.setState({
-        //                                     error: "You already submitted this week. Try again next week.",
-        //                                     show: "no-show-form"
-        //                                 })
-
-        //                                 break;
-        //                             }
-        //                         }
-        //                     })
-        //             })
-        //     })
+        axios({
+            method: 'get',
+            url: `${constants.ip}${constants.gateway}/getAccountByAccountID/${this.props.match.params.id}`
+        }).then(response => {
+            this.setState({ trainee: response.data })
+        })
     }
 
     showCommentField = () => {
@@ -127,37 +88,17 @@ class TrainerFormComponent extends Component {
         }).then(window.location = `/login/singleuser/${this.props.match.params.id}`)
 
     }
-    // createFeedback = () => {
-    //     axios({
-    //         method: 'post',
-    //         url: constants.gateway + 'addFeedbackForm',
-    //         data: {
-    //             accountID: this.state.user.accountID,
-    //             cohortID: this.state.user.cohortID,
-    //             score: this.state.sliderValue,
-    //             attitude: this.state.attitude,
-    //             tech: this.state.tech,
-    //             soft: this.state.soft,
-    //             comments: this.state.comments,
-    //             week: this.state.week
-    //         }
-    //     })
-    //         .then(response => {
-    //             this.props.history.push("/");
-    //         })
-    // } 
 
-    createFeedback = () => {
-        console.log("accountID " + this.props.match.params.id)
-        console.log("trainerID" + cookies.get('_id'))
-        console.log("formCount " + this.props.match.params.formCount)
-        console.log("attitude value " + this.state.attitudeSliderValue);
-        console.log("tech value " + this.state.techSliderValue);
-        console.log("soft value " + this.state.softSliderValue);
-        console.log("attitude " + this.state.attitude);
-        console.log("tech " + this.state.tech);
-        console.log("soft " + this.state.soft);
-        console.log("comments " + this.state.comments);
+    sendEmail = () => {
+        axios({
+            method: 'post',
+            url: `${constants.ip}${constants.gateway}/sendEmail`,
+            data: {
+                to: `jordan.hignett@academytrainee.com`,
+                subject: `Feedback from week ${this.props.match.params.formCount}`,
+                text: this.state.comments
+            }
+        })
     }
 
     updateattitude = (event) => {
@@ -284,6 +225,7 @@ class TrainerFormComponent extends Component {
                                 <div id={this.state.showComments}>
                                     <p>Comments to be seen by trainee</p>
                                     <textarea id="comments" name="comments" onChange={this.updateComments} />
+                                    <button id="register-button" type="button" onClick={this.sendEmail}>Send Email</button>
                                     <div>{this.state.commentsChars}/50</div>
                                 </div>
 
@@ -293,6 +235,9 @@ class TrainerFormComponent extends Component {
                             </div>
                         </div>
                     </form>
+                </div>
+                <div id={this.state.showFeedback}>
+                    <ViewTrainerForm completedForm={this.state.completedForm} />
                 </div>
             </div>
         );

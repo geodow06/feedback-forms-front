@@ -15,6 +15,8 @@ class SingleUserComponent extends Component {
 			trainee: "",
 			feedbackList: [],
 			feedbackSize: 0,
+			trainerFeedbackList: [],
+			trainerFeedbackSize: 0,
 			myArray: [],
 			flaggedBoolean: ""
 		}
@@ -40,6 +42,19 @@ class SingleUserComponent extends Component {
 				flagged: response.data.flagged.toString()
 			})
 		})
+
+		axios({
+			method: 'get',
+			url: `${constants.ip}${constants.gateway}getTrainerFormsByTraineeID/${props.match.params.id}`
+		}).then(response => {
+
+			this.setState({
+				trainerFeedbackList: response.data,
+				trainerFeedbackSize: response.data.length
+			})
+			console.log(this.state.trainerFeedbackList)
+		})
+
 	}
 
 
@@ -69,7 +84,7 @@ class SingleUserComponent extends Component {
 
 		return (
 			<div className="main-body">
-				<Graph trainee={this.state.trainee} graphData={this.state.feedbackList} />
+				<Graph graphData={this.state.feedbackList} graphData2={this.state.trainerFeedbackList} />
 				<div className="single-user-body">
 					<div id="single-user-info">
 						<h1>{this.state.trainee.firstName} {this.state.trainee.lastName}</h1><button id="flag-trainee" onClick={this.flagTrainee} className="button">FLAG</button>
@@ -84,7 +99,7 @@ class SingleUserComponent extends Component {
 								<tr>
 									<td>Week</td>
 									<td>Score</td>
-									<td>View feedback</td> 
+									<td>View feedback</td>
 									<td>Write Feedback</td>
 								</tr>
 							</thead>

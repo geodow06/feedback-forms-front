@@ -3,7 +3,7 @@ import '../App.css';
 import axios from 'axios';
 import * as constants from "../Consts.js";
 import { Link } from "react-router-dom";
-import GraphComponent from './GraphComponent';
+import AverageGraphComponent from './AverageGraphComponent';
 class SingleCohortComponent extends Component {
 
 	constructor(props) {
@@ -15,9 +15,10 @@ class SingleCohortComponent extends Component {
 			trainerName: "",
 			week: 0,
 			description: "",
-			traineesList: []
+			traineesList: [],
+			feedbackList: ""
 		}
-		
+
 		axios({
 			method: 'get',
 			url: `${constants.ip}${constants.gateway}getCohortByCohortID/${props.match.params.id}`
@@ -35,20 +36,31 @@ class SingleCohortComponent extends Component {
 			})
 		}).catch(error => {
 			console.log("Error:", error);
-		}) 
-
-		axios({method:'get' ,
-		url:`${constants.ip}${constants.gateway}getAccountsByCohortID/${props.match.params.id}`
-		}).then(response=>{ 
-			this.setState({traineesList:response.data})
 		})
 
+		axios({
+			method: 'get',
+			url: `${constants.ip}${constants.gateway}getAccountsByCohortID/${props.match.params.id}`
+		}).then(response => {
+			this.setState({ traineesList: response.data })
+		})
+
+		axios({
+			method: 'post',
+			url: `${constants.ip}${constants.gateway}getAveragesForCohortID/${props.match.params.id}`
+		}).then(response => { 
+			console.log(response.data)
+			this.setState({ feedbackList: response.data })
+		})
 
 	}
 
-	updateCohortFormCount=()=>{ 
-		axios({method:'put', 
-	url:`${constants.ip}${constants.gateway}updateCount/${this.state.cohort.cohortID}`})
+	updateCohortFormCount = () => {
+		axios({
+			method: 'put',
+			url: `${constants.ip}${constants.gateway}updateCount/${this.state.cohort.cohortID}`
+		})
+
 	}
 
 	back = () => {
@@ -61,15 +73,15 @@ class SingleCohortComponent extends Component {
 			<tr key={i}>
 				<td>{trainee.firstName + " " + trainee.lastName}</td>
 				<td>{trainee.email}</td>
-				<td><Link to={"/login/singleuser/"+trainee.accountID} className="button">VIEW</Link></td>
+				<td><Link to={"/login/singleuser/" + trainee.accountID} className="button">VIEW</Link></td>
 			</tr>
 		));
 
 		return (
 			<div className="main-body">
-				<GraphComponent/>
-				<button onClick={this.updateCohortFormCount}>BLOOP</button>
-			<h1>{this.state.cohort.Name}</h1>
+				<AverageGraphComponent cohortID={this.props.match.params.id}/>
+				<button onClick={this.updateCohortFormCount} id="register-button">Send out form</button>
+				<h1>{this.state.cohort.Name}</h1>
 				<p>Trainer: {this.state.cohort.trainerName}</p>
 				<p>Description: {this.state.cohort.description}</p>
 				<h3>Trainees</h3>
