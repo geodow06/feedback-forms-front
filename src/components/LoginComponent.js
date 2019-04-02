@@ -70,7 +70,6 @@ class LoginComponent extends Component {
 		if (!auth.isAuthenticated()) {
 			return (
 				<div className="main-body">
-					<NavBar/>
 					<div className="container">
 						<h1 id="heading">Login</h1>
 						<form>

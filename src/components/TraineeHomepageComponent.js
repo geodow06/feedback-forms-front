@@ -29,9 +29,8 @@ class TraineeHomepageComponent extends Component {
         return (
             <div className="main-body">
                 <div className="home-body">
-                    <div id="dashboard-item-1">
-                        <Link to="/login/form">FORM</Link>
-                    </div>
+
+                        <Link id="dashboard-item-1" to="/login/form">FORM</Link>
 
                     <div id="right-dashboard">
                         <div id="dashboard-item-2">

@@ -8,11 +8,21 @@ class GraphComponent extends Component {
 
 	constructor(props) {
 		super(props);
+		this.state = {
+			test: []
+		}
+
+
 	}
+
+
+
 	render() {
+
 		const renderLineChart = (
-			<LineChart width={800} height={300} data={this.props.graphData}>
-				<Line type="monotone" dataKey="score" stroke="#8884d8" />
+			<LineChart width={800} height={300} >
+				<Line type="monotone" data={this.props.graphData} dataKey="score" stroke="#8884d8" />
+				<Line type="monotone" data={this.props.graphData2} dataKey="averageScore" />
 				<CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
 				<XAxis dataKey="formCount" />
 				<YAxis />

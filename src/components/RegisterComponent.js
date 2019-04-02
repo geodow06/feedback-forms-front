@@ -108,7 +108,6 @@ class RegisterComponent extends Component {
   render() {
     return (
       <div className="main-body">
-       <NavBar/>
         <div className="container">
           <h1 id="heading">Register Account</h1>
           <form onSubmit={this.handleSubmit}>
