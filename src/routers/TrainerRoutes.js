@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
 	Route
 } from 'react-router-dom';
-import { ProtectedRoute } from '../Protected.route';
 import { UnprotectedRoute } from '../Unprotected.route';
 import { TraineeprotectedRoute } from '../Traineeprotected.route';
 
@@ -18,6 +17,8 @@ import NewCohort from '../components/NewCohortComponent';
 import CohortManager from '../managerComponents/CohortManager';
 import NavBar from '../components/NavbarComponent'; 
 import TrainerForm from '../components/TrainerFormComponent';
+import {ProtectedRoute} from '../Protected.route'
+
 class TrainerRoutes extends Component {
 
 	constructor(props) {
@@ -28,18 +29,18 @@ class TrainerRoutes extends Component {
 		return (
 			<div> 
 				<NavBar/>
-				<Route exact path="/login/" render={() => <TrainerHomepage />} />
-				<Route path="/login/form" render={() => <SubmitForm />} />
-				<Route path="/login/cohorts" render={() => <Cohorts />} />
+				<ProtectedRoute exact path="/login/" render={() => <TrainerHomepage />} />
+				<ProtectedRoute path="/login/form" render={() => <SubmitForm />} />
+				<ProtectedRoute path="/login/cohorts" render={() => <Cohorts />} />
 				{/* <Route path="/login/cohorts" render={() => <Cohorts />} />  */}
 				{/* <Route exact path="/login/cohortmanager" render={() => <CohortManager />} />  */}
-				<Route path="/login/trainees" render={() => <Trainees />} />
-				<Route path="/login/account" render={() => <Account />} />
-				<Route path="/login/singlecohort/:id" render={(props) => <Cohort match={props.match} />} />
-				<Route path="/login/newcohort" render={() => <NewCohort />} />
-				<Route path="/login/viewform/:id" render={(props) => <ViewForm match={props.match}/>} />
-				<Route path="/login/singleuser/:id" render={(props) => <User match={props.match}/>} /> 
-				<Route path="/login/trainerform/:id/:formCount" render={(props)=><TrainerForm match={props.match}/>}></Route>
+				<ProtectedRoute path="/login/trainees" render={() => <Trainees />} />
+				<ProtectedRoute path="/login/account" render={() => <Account />} />
+				<ProtectedRoute path="/login/singlecohort/:id" render={(props) => <Cohort match={props.match} />} />
+				<ProtectedRoute path="/login/newcohort" render={() => <NewCohort />} />
+				<ProtectedRoute path="/login/viewform/:id" render={(props) => <ViewForm match={props.match}/>} />
+				<ProtectedRoute path="/login/singleuser/:id" render={(props) => <User match={props.match}/>} /> 
+				<ProtectedRoute path="/login/trainerform/:id/:formCount" render={(props)=><TrainerForm match={props.match}/>}/>
 			</div>
 		)
 	}
