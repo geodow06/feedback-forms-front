@@ -17,7 +17,7 @@ class NavComponent extends Component {
 		return (
 			<div>
 				<ul id="nav-ul">
-					<li><Link to="/" onClick={() => { Auth.logout(() => { }); }}>Home</Link></li>
+					<li><Link to="/login">Home</Link></li>
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "trainee") ? <Link to="/login/form">Form</Link> : null}</li>
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "trainer") ? <Link to="/login/cohorts">Cohorts</Link> : null}</li>
 					<li> {JSON.parse(Auth.isAuthenticated() && cookies.get('type') === "trainer") ? <Link to="/login/trainees">Trainees</Link> : null}</li>
