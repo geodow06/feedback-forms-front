@@ -19,9 +19,6 @@ class NavComponent extends Component {
 				<ul id="nav-ul"> 
                     <li><Link to="/" onClick={() => { Auth.logout(() => { }); }}><img src='../logo.svg'></img></Link></li>
                     <li>QA feedback API</li>
-					{/* <li><Link to="/">Home</Link></li>
-					<li> {JSON.parse(Auth.isAuthenticated()) ? null : <Link to="/register">Register</Link>}</li>
-					<li> {JSON.parse(Auth.isAuthenticated()) ? <Link to="/" onClick={() => { Auth.logout(() => { }); }}>Logout</Link> : <Link to="/login">Login</Link>}</li> */}
 				</ul>
 			</div>
 		);

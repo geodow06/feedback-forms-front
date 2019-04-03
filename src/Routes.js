@@ -25,11 +25,6 @@ class Routes extends Component {
   	<div>
 		<Route exact path="/" component={ Homepage } />
 		<Route exact path="/home" component={ Homepage } />
-		{/* <TraineeprotectedRoute path="/form" component={ SubmitForm } />
-		<ProtectedRoute  path="/cohorts" component={ Cohorts } />
-		<ProtectedRoute  path="/trainees" component={ Trainees } />
-		<ProtectedRoute path="/account" component={ Account } />
-		<UnprotectedRoute path="/register" component={ Register } /> */} 
 		<Route path="/form" component={ SubmitForm } />
 		<Route  path="/cohorts" component={ Cohorts } />
 		<Route  path="/trainees" component={ Trainees } />
@@ -37,10 +32,6 @@ class Routes extends Component {
 		<Route path="/register" component={ Register } /> 
 		<Route path="/login" component={ Login } /> 
 		<Route path="/cohortmanager" component={ CohortManager }/>
-		{/* <ProtectedRoute  path="/singlecohort/:id" component={ Cohort } />
-		<ProtectedRoute  path="/singleuser/:id" component={ User } />
-		<ProtectedRoute  path="/viewform/:id" component={ ViewForm } />
-		<ProtectedRoute  path="/newcohort" component={ NewCohort } /> */}
 		<Route  path="/singlecohort/:id" component={ Cohort } />
 		<Route  path="/singleuser/:id" component={ User } />
 		<Route  path="/viewform/:id" component={ ViewForm } />

@@ -27,11 +27,6 @@ class SingleCohortComponent extends Component {
 			console.log("Response:", response.data);
 
 			this.setState({
-				// cohort: response.data,
-				// cohortName: response.data.cohortName,
-				// trainerName: response.data.trainerName,
-				// week: response.data.week,
-				// description: response.data.cohortDescription 
 				cohort: response.data
 			})
 		}).catch(error => {
