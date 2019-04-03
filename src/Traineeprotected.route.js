@@ -27,3 +27,4 @@ export const TraineeprotectedRoute = ({component: Component, ...rest}) => {
 		/>
 	);
 };
+export default TraineeprotectedRoute;
