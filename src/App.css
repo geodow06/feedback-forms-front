@@ -392,6 +392,12 @@ label {
   float: right;
 }
 
+/*Week text*/
+#week-text {
+  color: black;
+  text-align: right;
+}
+
 #login-and-error {
   margin-top: 10px;
   text-align: center;

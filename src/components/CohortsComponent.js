@@ -18,6 +18,7 @@ class CohortsComponent extends Component {
 			this.setState({
 				cohortList: response.data
 			})
+			console.log(response.data)
 		})
 	}
 

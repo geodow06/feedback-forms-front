@@ -12,11 +12,11 @@ class AverageGraphComponent extends Component {
             test: []
         }
 
-        axios({
-            method: 'post',
-            url: `${c.ip}${c.gateway}/getAveragesForCohortID/${this.props.cohortID}`
-        }).then(response =>
-            this.setState({ test: response.data }))
+    //     axios({
+    //         method: 'post',
+    //         url: `${c.ip}${c.gateway}/getAveragesForCohortID/${this.props.cohortID}`
+    //     }).then(response =>
+    //         this.setState({ test: response.data }))
     }
 
     render() {

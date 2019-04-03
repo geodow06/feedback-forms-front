@@ -80,6 +80,7 @@ class TraineeComponent extends Component {
 		})
 			.then(response => {
 				console.log(response);
+				window.history.go(0)
 			})
 	}
 

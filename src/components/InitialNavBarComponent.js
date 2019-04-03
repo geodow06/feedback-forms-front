@@ -17,7 +17,7 @@ class NavComponent extends Component {
 		return (
 			<div>
 				<ul id="nav-ul"> 
-                    <li><Link to="/" onClick={() => { Auth.logout(() => { }); }}><img src='../logo.svg'></img></Link></li>
+                    <li><Link to="/" onClick={() => { Auth.logout(() => { }); }}><img src='../QALogo.jpg'></img></Link></li>
                     <li>QA feedback API</li>
 				</ul>
 			</div>

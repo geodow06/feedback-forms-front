@@ -55,7 +55,7 @@ class SingleCohortComponent extends Component {
 			method: 'put',
 			url: `${constants.ip}${constants.gateway}updateCount/${this.state.cohort.cohortID}`
 		})
-
+		window.history.go(0)
 	}
 
 	back = () => {
@@ -75,6 +75,7 @@ class SingleCohortComponent extends Component {
 		return (
 			<div className="main-body">
 				<AverageGraphComponent cohortID={this.props.match.params.id}/>
+				<h2 id="week-text">Current week {this.state.cohort.formCount}</h2>
 				<button onClick={this.updateCohortFormCount} id="register-button">Send out form</button>
 				<h1>{this.state.cohort.Name}</h1>
 				<p>Trainer: {this.state.cohort.trainerName}</p>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import * as constants from "../Consts.js";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Label } from 'recharts';
 
 class GraphComponent extends Component {
 
@@ -15,17 +15,18 @@ class GraphComponent extends Component {
 
 	}
 
-
-
 	render() {
 
 		const renderLineChart = (
-			<LineChart width={800} height={300} >
-				<Line type="monotone" data={this.props.graphData} dataKey="score" stroke="#8884d8" />
-				<Line type="monotone" data={this.props.graphData2} dataKey="averageScore" />
+			<LineChart width={800} height={300} data={this.props.graphData}>
+				<Line type="monotone" dataKey="score" stroke="#8884d8" />
 				<CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-				<XAxis dataKey="formCount" />
-				<YAxis />
+				<XAxis dataKey="formCount" >
+					<Label value="Week" offset={0} position="insideBottom" />
+				</XAxis>
+				<YAxis type="number" domain={[0,10]}>
+					<Label value="Score" offset={0} position="insideLeft" />
+				</YAxis>
 				<Tooltip />
 			</LineChart>
 		);
