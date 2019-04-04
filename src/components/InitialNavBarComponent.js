@@ -6,6 +6,7 @@ import '../App.css';
 
 import Auth from '../Auth';
 import Cookies from 'universal-cookie';
+import Logo from '../QAfinal.png';
 
 const cookies = new Cookies();
 
@@ -17,8 +18,15 @@ class NavComponent extends Component {
 		return (
 			<div>
 				<ul id="nav-ul"> 
-                    <li><Link to="/" onClick={() => { Auth.logout(() => { }); }}><img src='../QALogo.jpg'></img></Link></li>
-                    <li>QA feedback API</li>
+                    <li><Link to="/" onClick={() => { Auth.logout(() => { }); }}><img src={Logo} height={75} width={120}></img></Link></li>
+					<li />
+					<li />
+					<li />
+					<li />
+					<li />
+					<li />
+					<li />
+					<li>QA feedback API</li>
 				</ul>
 			</div>
 		);
