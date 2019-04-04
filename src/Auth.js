@@ -4,8 +4,8 @@ const cookies = new Cookies();
 
 class Auth {
 
-	constructor(){
-		if (cookies.get('email') === undefined)	{
+	constructor() {
+		if (cookies.get('email') === undefined) {
 			this.authenticated = false;
 		}
 		else {
@@ -16,20 +16,20 @@ class Auth {
 	login(cb) {
 		cookies.set('email', cb.email);
 		cookies.set('_id', cb.accountID);
-		cookies.set('admin', cb.admin);
+		cookies.set('type', cb.type);
 		this.authenticated = true;
-		setTimeout(function(){
-			window.history.back();
-		}, 500);
+		// setTimeout(function(){
+		// 	window.history.back();
+		// }, 500);
 	}
 
 	logout(cb) {
-			cookies.remove('email');
-			cookies.remove('_id');
-			cookies.remove('admin');
-			this.authenticated = false;
-		setTimeout(function(){
-		}, 1000);
+		cookies.remove('email');
+		cookies.remove('_id');
+		cookies.remove('type');
+		this.authenticated = false;
+		// setTimeout(function(){
+		// }, 1000);
 	}
 
 	isAuthenticated() {

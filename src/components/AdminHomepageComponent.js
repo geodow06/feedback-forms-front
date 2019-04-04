@@ -7,7 +7,7 @@ import * as constants from "../Consts.js";
 
 const cookies = new Cookies();
 
-class HomepageComponent extends Component {
+class AdminHomepageComponent extends Component {
 
 	constructor() {
 		super();
@@ -67,40 +67,32 @@ class HomepageComponent extends Component {
 			})
 		}
 
-	}
+    } 
+    
+    logOut2=()=>{ 
+        this.props.logOut1();
+    }
 
 	render() {
 
 		return (
 			<div className="main-body">
-				{JSON.parse(auth.isAuthenticated()) ?
+			
+
 					<div className="home-body">
 						<div id="dashboard-item-1">
-							{JSON.parse(auth.isAuthenticated() && cookies.get('type') === 'trainer') ? <a href="/cohorts">COHORTS ({this.state.cohorts})</a> : <a href="/form">FORM</a>}
+							<a href="/register">Admin</a>
 						</div>
 
 						<div id="right-dashboard">
 							<div id="dashboard-item-2">
-								{JSON.parse(auth.isAuthenticated() && cookies.get('type') === 'trainer') ? <a href="/trainees">TRAINEES ({this.state.unassignedList})</a> : <a href="/account">ACCOUNT</a>}
-							</div>
-							<div id="dashboard-item-3">
-								{JSON.parse(auth.isAuthenticated() && cookies.get('admin') === 'trainer') ? <a href="/account">ACCOUNT</a> : <a href="/home" onClick={() => { auth.logout(() => { }); }}>LOGOUT</a>}
-							</div>
-						</div>
-					</div>
-
-					:
-
-					<div className="home-body">
-						<div id="dashboard-item-1">
-							<a href="/register">REGISTER</a>
-						</div>
-
-						<div id="right-dashboard">
-							<div id="dashboard-item-2-not-logged">
-								<a href="/login">LOGIN</a>
-							</div>
-						</div>
+								<a href="/login">Stuff</a>
+							</div> 
+                            <div id="dashboard-item-3"> 
+                                <a onClick={this.logOut2}>Logout</a>
+                            </div>
+						</div> 
+                        
 					</div>
 
 				}
@@ -109,4 +101,4 @@ class HomepageComponent extends Component {
 	}
 }
 
-export default HomepageComponent;
+export default AdminHomepageComponent;

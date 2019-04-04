@@ -40,18 +40,17 @@ class NewCohortComponent extends Component {
   createCohort = () => {
     axios({
       method: 'post',
-      url: constants.gateway + 'createCohort',
+      url: `${constants.ip}${constants.gateway}createCohort`,
       data: {
 
         cohortName: this.state.cohortName,
         trainerName: this.state.trainerName,
-        week: this.state.cohortWeek,
+        formCount: this.state.cohortWeek,
         cohortDescription: this.state.cohortDescription
       }
     })
-    .then(response => {
-      this.props.history.push("/cohorts");
-    })
+    .then(window.location = "/login/cohorts"
+    )
   }
 
   render() {
