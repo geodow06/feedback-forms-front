@@ -94,7 +94,7 @@ class TrainerFormComponent extends Component {
             method: 'post',
             url: `${constants.ip}${constants.gateway}/sendEmail`,
             data: {
-                to: this.trainee.email,
+                to: this.state.trainee.email,
                 subject: `Feedback from week ${this.props.match.params.formCount}`,
                 text: this.state.comments
             }
