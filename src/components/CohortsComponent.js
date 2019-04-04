@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 class CohortsComponent extends Component {
 
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 
 		this.state = {
 			cohortList: []
@@ -21,12 +21,6 @@ class CohortsComponent extends Component {
 			console.log(response.data)
 		})
 	}
-
-	chooseCohort = (cohort) => {
-		this.props.chooseCohort(cohort);
-	}
-
-
 
 	render() {
 
@@ -61,7 +55,6 @@ class CohortsComponent extends Component {
 				<div className="all-cohorts">
 					{cohorts}
 				</div>
-				<button onClick={this.chooseCohort}>click here to choose</button>
 			</div>
 		);
 	}

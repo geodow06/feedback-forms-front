@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.css';
 import axios from 'axios';
 import * as c from "../Consts.js";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Label } from 'recharts';
 
 class AverageGraphComponent extends Component {
 
@@ -12,11 +12,11 @@ class AverageGraphComponent extends Component {
             test: []
         }
 
-    //     axios({
-    //         method: 'post',
-    //         url: `${c.ip}${c.gateway}/getAveragesForCohortID/${this.props.cohortID}`
-    //     }).then(response =>
-    //         this.setState({ test: response.data }))
+        axios({
+            method: 'post',
+            url: `${c.ip}${c.gateway}/getAveragesForCohortID/${this.props.cohortID}`
+        }).then(response =>
+            this.setState({ test: response.data }))
     }
 
     render() {
@@ -29,8 +29,12 @@ class AverageGraphComponent extends Component {
             <LineChart width={800} height={300} >
                 <Line type="monotone" data={test1} dataKey="score" />
                 <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                <XAxis dataKey="formCount" />
-                <YAxis />
+                <XAxis dataKey="formCount">
+                    <Label value="Week" offset={0} position="insideBottom" />
+                </XAxis>
+                <YAxis type="number" domain={[0,10]}>
+                    <Label value="Score" offset={0} position="insideLeft" />
+                </YAxis>
                 <Tooltip />
             </LineChart>
         );

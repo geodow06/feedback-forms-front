@@ -29,12 +29,12 @@ class TrainerHomepageComponent extends Component {
             <div className="main-body">
                 <div className="home-body">
 
-                    <Link id="dashboard-item-1" to="/login/cohorts">COHORTS ({this.state.cohorts})</Link>
+                    <Link id="dashboard-item-1" to="/login/cohorts">COHORTS</Link>
 
 
                     <div id="right-dashboard">
 
-                        <Link id="dashboard-item-2" to="/login/trainees">TRAINEES ({this.state.unassignedList})</Link>
+                        <Link id="dashboard-item-2" to="/login/trainees">TRAINEES</Link>
 
                         <Link id="dashboard-item-3" to="/" onClick={() => { Auth.logout(() => { }); }}>LOGOUT</Link>
 
